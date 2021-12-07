@@ -12,6 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  get: ^4.5.1
+
+  clean_core: ^1.1.2-SNAPSHOT.20211206
+
+  animations: ^2.0.2
 
   cupertino_icons: ^1.0.2
 
