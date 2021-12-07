@@ -12,13 +12,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Architecture & Management
   get: ^4.5.1
-
   clean_core: ^1.1.2-SNAPSHOT.20211206
 
+  # Visual & Animations
   animations: ^2.0.2
-
   cupertino_icons: ^1.0.2
+
+  # Utils
+  faker: ^2.0.0
 
 dev_dependencies:
   flutter_test:
