@@ -1,10 +1,8 @@
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:get/get.dart';
 
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 
-class BrainZoomDrawerControllerImpl extends GetxController
-    implements BrainZoomDrawerController {
+class BrainZoomDrawerControllerImpl extends BrainZoomDrawerController {
   final zoomDrawerController = ZoomDrawerController();
 
   void toggleDrawer() {
