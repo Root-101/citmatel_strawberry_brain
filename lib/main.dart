@@ -12,10 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Playing App',
+      debugShowCheckedModeBanner: false,
       //--------------------- <THEAMING> -----------------------------------
       darkTheme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.deepOrange,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       //--------------------- </THEAMING> -----------------------------------
       //--------------------- <PAGINATION> -----------------------------------
