@@ -21,11 +21,11 @@ class MyApp extends StatelessWidget {
       ),
       //--------------------- </THEAMING> -----------------------------------
       //--------------------- <PAGINATION> -----------------------------------
-      initialRoute: DashBoard.ROUTE_NAME,
+      initialRoute: HomePage.ROUTE_NAME,
       getPages: [
         GetPage(
-          name: DashBoard.ROUTE_NAME,
-          page: () => DashBoard(),
+          name: HomePage.ROUTE_NAME,
+          page: () => HomePage(),
           transition: Transition.rightToLeft,
         ),
       ],
