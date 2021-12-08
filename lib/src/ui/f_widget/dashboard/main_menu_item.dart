@@ -33,6 +33,7 @@ class MainMenuItem extends StatelessWidget {
   //Tile chiquito que se muestra en la lista con todos los subniveles
   _buildClosed() {
     return Container(
+      color: color,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -51,7 +52,8 @@ class MainMenuItem extends StatelessWidget {
           Text(
             "Level $currentLevel",
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.grey,
+              fontSize: 10,
             ),
           ),
         ],
