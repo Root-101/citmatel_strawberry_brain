@@ -23,6 +23,16 @@ dependencies:
   # Utils
   faker: ^2.0.0
 
+  #Other Modules
+  citmatel_strawberry_trivia:
+    path: ../citmatel_strawberry_trivia
+
+  citmatel_strawberry_hangman:
+    path: ../citmatel_strawberry_hangman
+
+  citmatel_strawberry_dnd:
+    path: ../citmatel_strawberry_dnd
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
