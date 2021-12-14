@@ -28,3 +28,5 @@ doc/api/
 .flutter-plugins-dependencies
 
 citmatel_strawberry_brain.iml
+
+lib/generated_plugin_registrant.dart
