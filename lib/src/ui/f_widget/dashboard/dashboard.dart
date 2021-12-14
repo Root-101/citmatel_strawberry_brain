@@ -1,3 +1,4 @@
+import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 
@@ -70,9 +71,16 @@ class DashBoard extends StatelessWidget {
             currentLevel: 1,
             moduleMainScreen: TriviaLevelsScreen(),
           ),
-          Card(
-            child: Text("HangMan"),
+          MainMenuItem(
+            color: Colors.blueAccent,
+            icon: Icons.ac_unit_outlined,
+            name: "Ahorcadito",
+            currentLevel: 1,
+            moduleMainScreen: HangManLevelsScreen(),
           ),
+          /*Card(
+            child: Text("DnDHangman"),
+          ),*/
           Card(
             child: Text("DnD"),
           ),
