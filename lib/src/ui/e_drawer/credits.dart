@@ -57,6 +57,9 @@ class Credits extends StatelessWidget {
           height: 10,
         ),
         Text("EQUIPO DE REALIZACIÓN"),
+        SizedBox(
+          height: 5,
+        ),
         ...credits
             .map(
               (credit) => Padding(
@@ -97,15 +100,18 @@ class Credits extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Image.asset(APP_ICON_URL),
+        Image.asset(credits.appIconURL),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              credits.app_name,
+              credits.appName,
               style: TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.start,
             ),
-            Text(credits.version_number),
+            Text(
+              credits.versionNumber,
+              textAlign: TextAlign.start,
+            ),
           ],
         ),
       ],
@@ -114,8 +120,9 @@ class Credits extends StatelessWidget {
 }
 
 class CreditDomain {
-  String app_name = "Strawberry Brain";
-  String version_number = "0.1.0";
+  String appName = AppInfo.instance.appName; //"BRAIN";
+  String versionNumber = AppInfo.instance.version; //"0.1.0.SNAP...";
+  String appIconURL = AppInfo.instance.appIconURL; //"assets/app_icon.png";
 
   final String clientLogo = "assets/client_logo.svg";
   final List<CreditInfo> clientCredits = [
