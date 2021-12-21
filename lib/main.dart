@@ -87,6 +87,7 @@ class Init {
 
   Future initialize() async {
     BrainUIModule.init();
+    await AppInfo.instance.initialize();
     //await Future.delayed(const Duration(seconds: 3));
   }
 }
