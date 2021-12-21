@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 
@@ -46,7 +45,7 @@ class Credits extends StatelessWidget {
       ],
     ),
   ];
-  
+
   final String devIcon = "assets/app_splash_initial.png";
   final List<CreditInfo> devCredits = [
     CreditInfo(
@@ -88,7 +87,7 @@ class Credits extends StatelessWidget {
               ),
               _buildCredit(Image.asset(devIcon), devCredits),
               SizedBox(
-                height: 30,
+                height: 50,
               ),
               Text(ISBN),
               SizedBox(
@@ -118,13 +117,19 @@ class Credits extends StatelessWidget {
         Text("EQUIPO DE REALIZACIÓN"),
         ...credits
             .map(
-              (credit) => Column(
-                children: [
-                  _buildCreditHeader(credit.header),
-                  ...credit.peoples
-                      .map((people) => _buildCreditDetail(people))
-                      .toList(),
-                ],
+              (credit) => Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                  children: [
+                    _buildCreditHeader(credit.header),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    ...credit.peoples
+                        .map((people) => _buildCreditDetail(people))
+                        .toList(),
+                  ],
+                ),
               ),
             )
             .toList()
