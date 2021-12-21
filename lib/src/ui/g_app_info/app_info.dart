@@ -10,6 +10,9 @@ class AppInfo {
   String version = "???";
   String buildNumber = "???";
 
+  final String appIconURL = "assets/app_icon.png";
+  final String appSplashURL = "assets/app_splash_initial.png";
+
   late PackageInfo _packageInfo;
 
   Future initialize() async {
