@@ -8,5 +8,6 @@ export 'c_controller_impl/ui_controller_impl_exporter.dart';
 export 'd_error/ui_error_exporter.dart';
 export 'e_drawer/ui_drawer_exporter.dart';
 
-
 export 'f_widget/ui_widget_exporter.dart';
+export 'g_app_info/ui_appinfo_exporter.dart';
+

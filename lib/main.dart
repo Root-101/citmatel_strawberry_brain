@@ -52,6 +52,11 @@ class MainApp extends StatelessWidget {
           page: () => HomePage(),
           transition: Transition.rightToLeft,
         ),
+        GetPage(
+          name: Credits.ROUTE_NAME,
+          page: () => Credits(),
+          transition: Transition.downToUp,
+        ),
       ],
       unknownRoute: GetPage(
           name: UnknownRouteScreen.ROUTE_NAME,
@@ -82,6 +87,7 @@ class Init {
 
   Future initialize() async {
     BrainUIModule.init();
+    await AppInfo.instance.initialize();
     //await Future.delayed(const Duration(seconds: 3));
   }
 }
