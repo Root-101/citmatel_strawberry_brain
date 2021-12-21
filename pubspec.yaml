@@ -40,7 +40,7 @@ dev_dependencies:
     sdk: flutter
   flutter_native_splash: ^1.3.2
 
-#configuration of splash screen
+#configuration of splash screen, if something change, run: `flutter pub run flutter_native_splash:create`
 flutter_native_splash:
   image: "assets/app_splash_initial.png"
   color: "#0000FF"
