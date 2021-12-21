@@ -25,6 +25,7 @@ dependencies:
 
   # Utils
   faker: ^2.0.0
+  package_info_plus: ^1.3.0
 
   #Other Modules
   citmatel_strawberry_trivia:
