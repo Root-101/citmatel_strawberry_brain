@@ -10,3 +10,5 @@ export 'e_drawer/ui_drawer_exporter.dart';
 
 
 export 'f_widget/ui_widget_exporter.dart';
+
+export 'ui_constants.dart';
