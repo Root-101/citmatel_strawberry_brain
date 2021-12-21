@@ -52,6 +52,11 @@ class MainApp extends StatelessWidget {
           page: () => HomePage(),
           transition: Transition.rightToLeft,
         ),
+        GetPage(
+          name: Credits.ROUTE_NAME,
+          page: () => Credits(),
+          transition: Transition.zoom,
+        ),
       ],
       unknownRoute: GetPage(
           name: UnknownRouteScreen.ROUTE_NAME,
