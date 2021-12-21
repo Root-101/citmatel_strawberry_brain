@@ -1,28 +1,54 @@
+import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BrainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.purple,
+    return Scaffold(
+      body: Container(
+        color: Colors.purple,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildListTile(
+              "Que se yo que mas va aquí",
+              Icons.ac_unit_outlined,
+              () {
+                Get.snackbar(
+                    "Ni idea", "De verdad no tengo idea de que puede ir aquí.");
+              },
+            ),
+            _buildListTile(
+              "Sobre nosotros...",
+              Icons.info_outline_rounded,
+              () {
+                Get.toNamed(Credits.ROUTE_NAME);
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 
   _buildListTile(String title, IconData icon, Function tapHandler) {
-    return ListTile(
-      leading: Icon(
-        icon,
-        size: 26,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: ListTile(
+        leading: Icon(
+          icon,
+          size: 30,
+          color: Colors.white,
         ),
+        minLeadingWidth: 15,
+        title: Text(
+          title,
+          style: TextStyle(fontSize: 16, color: Colors.white),
+        ),
+        onTap: () => tapHandler(),
       ),
-      onTap: () => tapHandler(),
     );
   }
 }
