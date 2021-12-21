@@ -55,7 +55,7 @@ class MainApp extends StatelessWidget {
         GetPage(
           name: Credits.ROUTE_NAME,
           page: () => Credits(),
-          transition: Transition.zoom,
+          transition: Transition.downToUp,
         ),
       ],
       unknownRoute: GetPage(
