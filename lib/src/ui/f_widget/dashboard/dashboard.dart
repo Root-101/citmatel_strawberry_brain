@@ -1,4 +1,5 @@
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
+import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
@@ -79,11 +80,12 @@ class DashBoard extends StatelessWidget {
               currentLevel: 1,
               moduleMainScreen: HangManLevelsScreen(),
             ),
-            /*Card(
-              child: Text("DnDHangman"),
-            ),*/
-            Card(
-              child: Text("DnD"),
+            MainMenuItem(
+              color: Colors.green,
+              icon: Icons.inbox,
+              name: "DnD",
+              currentLevel: 1,
+              moduleMainScreen: DnDLevelsScreen(),
             ),
             Card(
               child: Text("Random"),
