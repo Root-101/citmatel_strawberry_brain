@@ -22,6 +22,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_zoom_drawer: ^2.1.1
   flutter_svg: ^1.0.0
+  flutter_animator: ^3.2.0
 
   # Utils
   faker: ^2.0.0
