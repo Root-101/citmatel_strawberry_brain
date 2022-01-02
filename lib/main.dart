@@ -20,7 +20,26 @@ class SplashScreen extends StatelessWidget {
       future: Init.instance.initialize(),
       mainApp: BrainMaterialApp(),
       splashes: [
-        SingleSplashModel(splash: Text("Splash"), duration: 3),
+        SingleSplashModel(
+          splash: Container(
+            color: Colors.blueAccent,
+            key: ValueKey(1),
+            child: Center(
+              child: Text("Splash #1"),
+            ),
+          ),
+          duration: 5,
+        ),
+        SingleSplashModel(
+          splash: Container(
+            color: Colors.amberAccent,
+            key: ValueKey(2),
+            child: Center(
+              child: Text("Splash #2"),
+            ),
+          ),
+          duration: 5,
+        ),
       ],
     );
   }
@@ -34,7 +53,7 @@ class Init {
   Future initialize() async {
     BrainUIModule.init();
     await AppInfo.instance.initialize();
-    await Future.delayed(const Duration(seconds: 3));
+    //await Future.delayed(const Duration(seconds: 10));
   }
 }
 
