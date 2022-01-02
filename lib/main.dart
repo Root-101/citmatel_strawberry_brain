@@ -1,7 +1,7 @@
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(SplashScreen());
@@ -16,22 +16,48 @@ class SplashScreen extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
-    return FutureBuilder(
+    return SecondarySplashScreen(
       future: Init.instance.initialize(),
-      builder: (context, AsyncSnapshot snapshot) {
-        // Show splash screen while waiting for app resources to load:
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const MaterialApp(
-              home: SecondarySplash()); //SecondarySplash mientras carga
-        } else {
-          return MainApp(); //app como tal una vez que carga
-        }
-      },
+      mainApp: BrainMaterialApp(),
+      splashes: [
+        SingleSplashModel(
+          splash: Container(
+            color: Colors.blueAccent,
+            key: ValueKey(1),
+            child: Center(
+              child: Text("Splash #1"),
+            ),
+          ),
+          duration: 5,
+        ),
+        SingleSplashModel(
+          splash: Container(
+            color: Colors.amberAccent,
+            key: ValueKey(2),
+            child: Center(
+              child: Text("Splash #2"),
+            ),
+          ),
+          duration: 5,
+        ),
+      ],
     );
   }
 }
 
-class MainApp extends StatelessWidget {
+class Init {
+  Init._();
+
+  static final instance = Init._();
+
+  Future initialize() async {
+    BrainUIModule.init();
+    await AppInfo.instance.initialize();
+    //await Future.delayed(const Duration(seconds: 10));
+  }
+}
+
+class BrainMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -63,31 +89,5 @@ class MainApp extends StatelessWidget {
           page: () => UnknownRouteScreen()),
       //--------------------- </PAGINATION> -----------------------------------
     );
-  }
-}
-
-class SecondarySplash extends StatelessWidget {
-  const SecondarySplash({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffe1f5fe),
-      body: Center(
-        child: Text("Secondary Splash"), //Image.asset('assets/splash.png'),
-      ),
-    );
-  }
-}
-
-class Init {
-  Init._();
-
-  static final instance = Init._();
-
-  Future initialize() async {
-    BrainUIModule.init();
-    await AppInfo.instance.initialize();
-    //await Future.delayed(const Duration(seconds: 3));
   }
 }
