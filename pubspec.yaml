@@ -40,6 +40,10 @@ dependencies:
   citmatel_strawberry_dnd:
     path: ../citmatel_strawberry_dnd
 
+  #Tools
+  citmatel_strawberry_tools:
+    path: ../citmatel_strawberry_tools
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
