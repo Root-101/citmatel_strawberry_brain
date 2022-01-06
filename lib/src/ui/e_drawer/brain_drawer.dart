@@ -1,3 +1,4 @@
+import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,27 +8,35 @@ class BrainDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.purple,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildListTile(
-              "Que se yo que mas va aquí",
-              Icons.ac_unit_outlined,
-              () {
-                Get.snackbar(
-                    "Ni idea", "De verdad no tengo idea de que puede ir aquí.");
-              },
-            ),
-            _buildListTile(
-              "Sobre nosotros...",
-              Icons.info_outline_rounded,
-              () {
-                Get.toNamed(Credits.ROUTE_NAME);
-              },
-            )
-          ],
+        decoration: BoxDecoration(
+          color: Colors.transparent, //pa si por si acaso
+          image: DecorationImage(
+            image: AssetImage(BrainAssets.CHARACTER_FIELD),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildListTile(
+                "Que se yo que mas va aquí",
+                Icons.ac_unit_outlined,
+                () {
+                  Get.snackbar("Ni idea",
+                      "De verdad no tengo idea de que puede ir aquí.");
+                },
+              ),
+              _buildListTile(
+                "Sobre nosotros...",
+                Icons.info_outline_rounded,
+                () {
+                  Get.toNamed(Credits.ROUTE_NAME);
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
