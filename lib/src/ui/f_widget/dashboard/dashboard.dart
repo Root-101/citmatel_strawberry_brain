@@ -16,7 +16,7 @@ class DashBoard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.transparent, //pa si por si acaso
           image: DecorationImage(
-            image: AssetImage(BrainAssets.CHARACTER_PRESENTATION),
+            image: AssetImage(BrainAssets.CHARACTER_BACKGROUND),
             fit: BoxFit.cover,
           ),
         ),

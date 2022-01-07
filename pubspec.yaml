@@ -71,4 +71,5 @@ flutter:
   uses-material-design: true
 
   assets:
-    - packages/citmatel_strawberry_brain/assets/character/presentation.jpg
+    - packages/citmatel_strawberry_brain/assets/character/field.jpg
+    - packages/citmatel_strawberry_brain/assets/character/background.jpg
