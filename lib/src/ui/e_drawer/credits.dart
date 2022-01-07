@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:citmatel_strawberry_brain/assets/brain_assets.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 
 class Credits extends StatelessWidget {
   static final ROUTE_NAME = "/credits";
@@ -48,11 +48,7 @@ class Credits extends StatelessWidget {
   _buildCredit(String logoURL, List<CreditInfo> credits) {
     return Column(
       children: [
-        SvgPicture.asset(
-          logoURL,
-          cacheColorFilter: true,
-          //width: 30,
-        ),
+        Image.asset(logoURL),
         SizedBox(
           height: 10,
         ),
@@ -124,7 +120,7 @@ class CreditDomain {
   String versionNumber = AppInfo.instance.version; //"0.1.0.SNAP...";
   String appIconURL = AppInfo.instance.appIconURL; //"assets/app_icon.png";
 
-  final String clientLogo = "assets/client_logo.svg";
+  final String clientLogo = BrainAssets.APP_CLIENT_LOGO;
   final List<CreditInfo> clientCredits = [
     CreditInfo(
       header: "Líder de proyecto",
@@ -164,7 +160,7 @@ class CreditDomain {
     ),
   ];
 
-  final String devLogo = "assets/dev_logo.svg";
+  final String devLogo = BrainAssets.APP_DEV_LOGO_FLAT;
   final List<CreditInfo> devCredits = [
     CreditInfo(
       header: "Líder de proyecto",

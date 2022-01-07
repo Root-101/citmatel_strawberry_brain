@@ -1,3 +1,4 @@
+import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
@@ -11,13 +12,22 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            _buildSettingsButton(),
-            _buildHintText(),
-            _buildMainOptions(),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.transparent, //pa si por si acaso
+          image: DecorationImage(
+            image: AssetImage(BrainAssets.CHARACTER_BACKGROUND),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: Stack(
+            children: [
+              _buildSettingsButton(),
+              _buildHintText(),
+              _buildMainOptions(),
+            ],
+          ),
         ),
       ),
     );
@@ -38,7 +48,7 @@ class DashBoard extends StatelessWidget {
     return Positioned(
       left: 0,
       right: 0,
-      top: MediaQuery.of(Get.context!).size.height / 18,
+      top: 0, //MediaQuery.of(Get.context!).size.height / 18,
       child: HintTextWidget(),
     );
   }
@@ -47,7 +57,7 @@ class DashBoard extends StatelessWidget {
     return Positioned(
       left: 0,
       right: 0,
-      bottom: 30,
+      bottom: 0,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         //childAspectRatio es 4/3, por lo tanto va a ser mas ancho que alto,
