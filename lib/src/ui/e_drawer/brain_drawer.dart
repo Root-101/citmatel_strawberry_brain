@@ -11,7 +11,7 @@ class BrainDrawer extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.transparent, //pa si por si acaso
           image: DecorationImage(
-            image: AssetImage(BrainAssets.CHARACTER_FIELD),
+            image: AssetImage(BrainAssets.CHARACTER_BACKGROUND_DASHBOARD),
             fit: BoxFit.cover,
           ),
         ),

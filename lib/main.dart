@@ -1,3 +1,4 @@
+import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,10 +33,12 @@ class SplashScreen extends StatelessWidget {
         ),
         SingleSplashModel(
           splash: Container(
-            color: Colors.amberAccent,
-            key: ValueKey(2),
-            child: Center(
-              child: Text("Splash #2"),
+            decoration: BoxDecoration(
+              color: Colors.transparent, //pa si por si acaso
+              image: DecorationImage(
+                image: AssetImage(BrainAssets.CHARACTER_BACKGROUND_MAIN),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           duration: 5,
