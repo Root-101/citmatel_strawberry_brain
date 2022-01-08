@@ -30,11 +30,11 @@ class Credits extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              Text(credits.ISBN),
+              ...credits.others.map((e) => Text(e)).toList(),
               SizedBox(
                 height: 30,
               ),
-              ...credits.others.map((e) => Text(e)).toList(),
+              Text(credits.ISBN),
               SizedBox(
                 height: 20,
               ),
@@ -52,7 +52,10 @@ class Credits extends StatelessWidget {
   _buildCredit(String logoURL, List<CreditInfo> credits) {
     return Column(
       children: [
-        Image.asset(logoURL),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
+          child: Image.asset(logoURL),
+        ),
         SizedBox(
           height: 10,
         ),
@@ -171,7 +174,7 @@ class CreditDomain {
       peoples: ["Jesús Hernández Barrios"],
     ),
     CreditInfo(
-      header: "Otros colaboradores",
+      header: "Equipo de desarrollo",
       peoples: ["Ing. Jessica Aidyl García Albalah"],
     ),
   ];
@@ -179,7 +182,7 @@ class CreditDomain {
   final List<String> others = [
     "Otras colaboraciones",
     "Imagenes del personaje por:",
-    "Alguien ahí",
+    "upklyak / Freepik",
   ];
 
   final String ISBN = "ISBN:123-456-789-000";
