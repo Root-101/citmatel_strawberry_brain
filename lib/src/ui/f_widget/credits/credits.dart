@@ -11,38 +11,40 @@ class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              _buildAppHeader(),
-              SizedBox(
-                height: 20,
-              ),
-              _buildCredit(credits.clientLogo, credits.clientCredits),
-              SizedBox(
-                height: 30,
-              ),
-              _buildCredit(credits.devLogo, credits.devCredits),
-              SizedBox(
-                height: 30,
-              ),
-              ...credits.others.map((e) => Text(e)).toList(),
-              SizedBox(
-                height: 30,
-              ),
-              Text(credits.ISBN),
-              SizedBox(
-                height: 20,
-              ),
-              ...credits.copyright.map((e) => Text(e)).toList(),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+      body: Container(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                _buildAppHeader(),
+                SizedBox(
+                  height: 20,
+                ),
+                _buildCredit(credits.clientLogo, credits.clientCredits),
+                SizedBox(
+                  height: 30,
+                ),
+                _buildCredit(credits.devLogo, credits.devCredits),
+                SizedBox(
+                  height: 30,
+                ),
+                ...credits.others.map((e) => Text(e)).toList(),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(credits.ISBN),
+                SizedBox(
+                  height: 20,
+                ),
+                ...credits.copyright.map((e) => Text(e)).toList(),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),
