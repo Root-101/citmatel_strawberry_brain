@@ -34,6 +34,10 @@ class Credits extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
+              ...credits.others.map((e) => Text(e)).toList(),
+              SizedBox(
+                height: 20,
+              ),
               ...credits.copyright.map((e) => Text(e)).toList(),
               SizedBox(
                 height: 20,
@@ -171,6 +175,13 @@ class CreditDomain {
       peoples: ["Ing. Jessica Aidyl García Albalah"],
     ),
   ];
+
+  final List<String> others = [
+    "Otras colaboraciones",
+    "Imagenes del personaje por:",
+    "Alguien ahí",
+  ];
+
   final String ISBN = "ISBN:123-456-789-000";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
