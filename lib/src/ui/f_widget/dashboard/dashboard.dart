@@ -97,9 +97,7 @@ class DashBoard extends StatelessWidget {
               currentLevel: 1,
               moduleMainScreen: DnDLevelsScreen(),
             ),
-            Card(
-              child: Text("Random"),
-            ),
+            RandomTile(),
           ],
         ),
       ),
