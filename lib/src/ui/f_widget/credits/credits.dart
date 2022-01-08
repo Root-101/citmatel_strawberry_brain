@@ -11,34 +11,40 @@ class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              _buildAppHeader(),
-              SizedBox(
-                height: 20,
-              ),
-              _buildCredit(credits.clientLogo, credits.clientCredits),
-              SizedBox(
-                height: 30,
-              ),
-              _buildCredit(credits.devLogo, credits.devCredits),
-              SizedBox(
-                height: 30,
-              ),
-              Text(credits.ISBN),
-              SizedBox(
-                height: 30,
-              ),
-              ...credits.copyright.map((e) => Text(e)).toList(),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+      body: Container(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                _buildAppHeader(),
+                SizedBox(
+                  height: 20,
+                ),
+                _buildCredit(credits.clientLogo, credits.clientCredits),
+                SizedBox(
+                  height: 30,
+                ),
+                _buildCredit(credits.devLogo, credits.devCredits),
+                SizedBox(
+                  height: 30,
+                ),
+                ...credits.others.map((e) => Text(e)).toList(),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(credits.ISBN),
+                SizedBox(
+                  height: 20,
+                ),
+                ...credits.copyright.map((e) => Text(e)).toList(),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -48,7 +54,10 @@ class Credits extends StatelessWidget {
   _buildCredit(String logoURL, List<CreditInfo> credits) {
     return Column(
       children: [
-        Image.asset(logoURL),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
+          child: Image.asset(logoURL),
+        ),
         SizedBox(
           height: 10,
         ),
@@ -167,10 +176,17 @@ class CreditDomain {
       peoples: ["Jesús Hernández Barrios"],
     ),
     CreditInfo(
-      header: "Otros colaboradores",
+      header: "Equipo de desarrollo",
       peoples: ["Ing. Jessica Aidyl García Albalah"],
     ),
   ];
+
+  final List<String> others = [
+    "Otras colaboraciones",
+    "Imagenes del personaje por:",
+    "upklyak / Freepik",
+  ];
+
   final String ISBN = "ISBN:123-456-789-000";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
