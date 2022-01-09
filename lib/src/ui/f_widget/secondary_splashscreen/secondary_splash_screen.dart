@@ -1,7 +1,8 @@
+import 'dart:async';
+
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
-import 'package:flutter_countdown_timer/index.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class SecondarySplashScreen extends StatefulWidget {
@@ -23,6 +24,13 @@ class SecondarySplashScreen extends StatefulWidget {
 class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
   final _currentPageNotifier = ValueNotifier<int>(0);
   bool done = false;
+  Timer? timer;
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +38,7 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
       future: widget.future,
       builder: (context, AsyncSnapshot snapshot) {
         if (done && snapshot.connectionState == ConnectionState.done) {
+          dispose();
           return FadeIn(
             child: widget.mainApp,
           );
@@ -43,27 +52,20 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
 
   _buildBody(bool waiting) {
     var current = widget.splashes[_currentPageNotifier.value];
-    return CountdownTimer(
-      controller: CountdownTimerController(
-        endTime: DateTime.now()
-            .add(Duration(seconds: current.duration))
-            .millisecondsSinceEpoch,
-        onEnd: _nextSplash,
+
+    timer?.cancel();
+    timer = Timer(Duration(seconds: current.duration), _nextSplash);
+
+    return MaterialApp(
+      home: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            _buildCurrentSplash(current.splash),
+            _buildCircleIndicator(),
+            if (!waiting) _buildSkip(),
+          ],
+        ),
       ),
-      endWidget: Container(),
-      widgetBuilder: (_, __) {
-        return MaterialApp(
-          home: Scaffold(
-            body: Stack(
-              children: <Widget>[
-                _buildCurrentSplash(current.splash),
-                _buildCircleIndicator(),
-                if (!waiting) _buildSkip(),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 
@@ -77,7 +79,7 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
             done = true;
           });
         },
-        child: Text("skip"),
+        child: Text("Saltar"),
       ),
     );
   }
