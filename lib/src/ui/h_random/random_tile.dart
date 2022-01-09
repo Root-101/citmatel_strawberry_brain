@@ -60,11 +60,11 @@ class RandomTile extends StatelessWidget {
           subLevelDomain: controller.randomTriviaSublevel(),
         );
       case GameMode.HANGMAN:
-        return HangManSubLevelBackground(
+        return HangManSubLevelLoading(
           subLevelDomain: controller.randomHangmanSublevel(),
         );
       case GameMode.DND:
-        return DnDSubLevelBackground(
+        return DnDSubLevelLoading(
           subLevelDomain: controller.randomDnDSublevel(),
         );
     }
