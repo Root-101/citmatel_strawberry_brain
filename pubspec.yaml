@@ -25,6 +25,8 @@ dependencies:
   flutter_animator: ^3.2.0
   page_view_indicators: ^2.0.0
 
+  video_player: ^2.2.10
+
   # Utils
   faker: ^2.0.0
   package_info_plus: ^1.3.0
@@ -74,6 +76,6 @@ flutter:
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
     - packages/citmatel_strawberry_brain/assets/character/background_main.jpg
 
-
+    - packages/citmatel_strawberry_brain/assets/app/client_splash_1.mp4
     - packages/citmatel_strawberry_brain/assets/app/client_logo.png
     - packages/citmatel_strawberry_brain/assets/app/dev_logo_flat.png
