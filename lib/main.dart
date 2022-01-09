@@ -1,11 +1,22 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
-import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
   runApp(SplashScreen());
+}
+
+class Init {
+  Init._();
+
+  static final instance = Init._();
+
+  Future initialize() async {
+    BrainUIModule.init();
+    await AppInfo.instance.initialize();
+    //await Future.delayed(const Duration(seconds: 10));
+  }
 }
 
 class SplashScreen extends StatelessWidget {
@@ -24,12 +35,9 @@ class SplashScreen extends StatelessWidget {
         SingleSplashModel(
           splash: Container(
             color: Colors.blueAccent,
-            key: ValueKey(1),
-            child: Center(
-              child: Text("Splash #1"),
-            ),
+            child: SplashScreenClient1(),
           ),
-          duration: 5,
+          duration: 13,
         ),
         SingleSplashModel(
           splash: Container(
@@ -45,18 +53,6 @@ class SplashScreen extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class Init {
-  Init._();
-
-  static final instance = Init._();
-
-  Future initialize() async {
-    BrainUIModule.init();
-    await AppInfo.instance.initialize();
-    //await Future.delayed(const Duration(seconds: 10));
   }
 }
 
