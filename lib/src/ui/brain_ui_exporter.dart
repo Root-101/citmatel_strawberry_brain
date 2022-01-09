@@ -9,3 +9,4 @@ export 'e_drawer/ui_drawer_exporter.dart';
 export 'f_widget/ui_widget_exporter.dart';
 export 'g_app_info/ui_appinfo_exporter.dart';
 export 'h_random/ui_random_exporter.dart';
+export 'i_secondary_splashscreen/ui_secondary_splashscreen_exporter.dart';
