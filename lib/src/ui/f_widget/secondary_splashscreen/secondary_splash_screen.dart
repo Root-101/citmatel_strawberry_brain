@@ -79,7 +79,7 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
             done = true;
           });
         },
-        child: Text("skip"),
+        child: Text("Saltar"),
       ),
     );
   }
