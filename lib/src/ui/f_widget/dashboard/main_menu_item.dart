@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
+import 'package:flutter/material.dart';
 
 class MainMenuItem extends StatelessWidget {
   final Color color;
@@ -65,47 +65,4 @@ class MainMenuItem extends StatelessWidget {
   _buildOpen() {
     return moduleMainScreen;
   }
-/*
-
-  _closedBuilder() {
-    return Container(
-      child: Center(child: Text("Chiquito")),
-    );
-    Container(
-      padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            color: Colors.white,
-          ),
-          Text(
-            name,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            "Level $currentLevel",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  _openBuilder() {
-    return Container(
-      child: Center(child: Text("grande")), //moduleMainScreen,
-    );
-  }*/
 }
