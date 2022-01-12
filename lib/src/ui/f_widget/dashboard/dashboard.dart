@@ -2,6 +2,7 @@ import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
+import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,9 +38,13 @@ class DashBoard extends StatelessWidget {
     return Positioned(
       left: 10,
       top: 10,
-      child: IconButton(
-        icon: Icon(Icons.settings),
+      child: StrawberryWidgets.circularButtonWithIcon(
         onPressed: Get.find<BrainZoomDrawerController>().toggleDrawer,
+        backgrounColor: Colors.transparent,
+        child: StrawberryWidgets.normalIcon(
+          icon: Icons.settings,
+          iconColor: Colors.black,
+        ),
       ),
     );
   }
