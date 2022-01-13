@@ -51,9 +51,8 @@ class DashBoard extends StatelessWidget {
 
   _buildHintText() {
     return Positioned(
-      left: 0,
       right: 0,
-      top: 0, //MediaQuery.of(Get.context!).size.height / 18,
+      top: 40, //MediaQuery.of(Get.context!).size.height / 18,
       child: HintTextWidget(),
     );
   }
