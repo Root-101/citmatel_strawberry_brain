@@ -1,10 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:citmatel_strawberry_brain/brain_exporter.dart';
-import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
-import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
-import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class RandomTile extends StatelessWidget {
   late Widget _random;
@@ -51,7 +46,11 @@ class RandomTile extends StatelessWidget {
   }
 
   _randomSubLevelWidget() {
-    BrainRandomController controller = Get.find();
+    return Center(
+        child: Text(
+            "Modo de juego desabilitado por el momento por trabajo con el progreso en la BD."));
+
+    /*BrainRandomController controller = Get.find();
 
     GameMode mode = controller.randomGameMode();
     switch (mode) {
@@ -67,6 +66,6 @@ class RandomTile extends StatelessWidget {
         return DnDSubLevelLoading(
           subLevelDomain: controller.randomDnDSublevel(),
         );
-    }
+    }*/
   }
 }
