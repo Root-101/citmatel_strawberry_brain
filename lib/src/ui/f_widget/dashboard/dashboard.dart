@@ -40,7 +40,7 @@ class DashBoard extends StatelessWidget {
       top: 10,
       child: StrawberryWidgets.circularButtonWithIcon(
         onPressed: Get.find<BrainZoomDrawerController>().toggleDrawer,
-        backgrounColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         child: StrawberryWidgets.normalIcon(
           icon: Icons.settings,
           iconColor: Colors.black,
