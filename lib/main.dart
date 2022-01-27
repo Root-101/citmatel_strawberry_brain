@@ -1,4 +1,7 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
+import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
+import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -80,6 +83,21 @@ class BrainMaterialApp extends StatelessWidget {
         GetPage(
           name: Credits.ROUTE_NAME,
           page: () => Credits(),
+          transition: Transition.downToUp,
+        ),
+        GetPage(
+          name: DnDLevelsScreen.ROUTE_NAME,
+          page: () => DnDLevelsScreen(),
+          transition: Transition.downToUp,
+        ),
+        GetPage(
+          name: HangManLevelsScreen.ROUTE_NAME,
+          page: () => HangManLevelsScreen(),
+          transition: Transition.downToUp,
+        ),
+        GetPage(
+          name: TriviaLevelsScreen.ROUTE_NAME,
+          page: () => TriviaLevelsScreen(),
           transition: Transition.downToUp,
         ),
       ],

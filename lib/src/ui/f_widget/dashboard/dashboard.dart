@@ -1,5 +1,7 @@
+import 'dart:math';
+
+import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
-import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
 import 'package:citmatel_strawberry_tools/tools_exporter.dart';
@@ -26,7 +28,8 @@ class DashBoard extends StatelessWidget {
             children: [
               _buildSettingsButton(),
               _buildHintText(),
-              _buildMainOptions(),
+              _buildMultiMenu(context),
+              //     _buildMainOptions(),
             ],
           ),
         ),
@@ -104,6 +107,121 @@ class DashBoard extends StatelessWidget {
             RandomTile(),
           ],
         ),
+      ),
+    );
+  }
+
+  _buildMultiMenu(BuildContext context) {
+    GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
+    Size size = MediaQuery.of(context).size;
+    bool openClose = true;
+    return Padding(
+      padding: EdgeInsets.only(
+        top: size.height / 2.5,
+      ),
+      child: CircularMenu(
+        // Menu alignment.
+        alignment: Alignment.center,
+        toggleButtonColor: Colors.transparent,
+        toggleButtonIconColor: Colors.transparent,
+        toggleButtonPadding: 0,
+        radius: 150,
+
+        // animation curve in forward
+        curve: Curves.bounceOut,
+        // animation curve in reverse
+        reverseCurve: Curves.fastOutSlowIn,
+
+        startingAngleInRadian: pi * 0.25,
+        endingAngleInRadian: pi * 0.75,
+
+        backgroundWidget: Center(
+          child: MaterialButton(
+            onPressed: () {
+              if (openClose) {
+                key.currentState!.forwardAnimation();
+                openClose = false;
+              } else {
+                key.currentState!.reverseAnimation();
+                openClose = true;
+              }
+            },
+            color: Colors.pink,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            padding: EdgeInsets.only(
+                bottom: 20,
+                left: size.width / 4,
+                top: 20,
+                right: size.width / 4),
+            child: Text(
+              'Jugar',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+        ),
+
+        key: key,
+
+        items: [
+          CircularMenuItem(
+            margin: 20,
+            iconSize: 40,
+            enableBadge: true,
+            badgeColor: Colors.lightGreenAccent,
+            badgeLabel: 'Puzzle',
+            badgeRadius: 20,
+            badgeTextColor: Colors.white,
+            badgeTextStyle: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+            badgeLeftOffet: size.width / 6,
+            badgeTopOffet: 0,
+            icon: Icons.extension,
+            color: Colors.green,
+            onTap: () => Get.toNamed(DnDLevelsScreen.ROUTE_NAME),
+          ),
+          CircularMenuItem(
+            margin: 20,
+            iconSize: 40,
+            enableBadge: true,
+            badgeColor: Colors.lightBlueAccent,
+            badgeLabel: 'Ahorcado',
+            badgeRadius: 20,
+            badgeTextColor: Colors.white,
+            badgeTextStyle: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+            badgeLeftOffet: size.width / 6,
+            badgeTopOffet: 0,
+            icon: Icons.sentiment_very_dissatisfied_outlined,
+            color: Colors.blue,
+            onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
+          ),
+          CircularMenuItem(
+            margin: 20,
+            iconSize: 40,
+            enableBadge: true,
+            badgeColor: Colors.amber,
+            badgeLabel: 'Trivia',
+            badgeRadius: 20,
+            badgeTextColor: Colors.white,
+            badgeTextStyle: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+            badgeLeftOffet: size.width / 6,
+            badgeTopOffet: 0,
+            icon: Icons.format_list_numbered_outlined,
+            color: Colors.orange,
+            onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
+          ),
+        ],
       ),
     );
   }
