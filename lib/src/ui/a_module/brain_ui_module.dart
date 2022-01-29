@@ -13,6 +13,5 @@ class BrainUIModule {
     DnDUIModule.init();
 
     Get.put<BrainZoomDrawerController>(BrainZoomDrawerControllerImpl());
-    Get.put<BrainRandomController>(BrainRandomControllerImpl());
   }
 }
