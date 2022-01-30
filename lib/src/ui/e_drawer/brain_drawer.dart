@@ -2,6 +2,7 @@ import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BrainDrawer extends StatelessWidget {
   @override
@@ -20,6 +21,16 @@ class BrainDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _buildListTile(
+                "Google",
+                Icons.animation,
+                () async {
+                  String url = "https://google.com";
+                  if (!await launch(url))
+                    Get.snackbar("Error lanzando URL",
+                        "Error tratando de abrir la URL $url, es probable que el dispositivo no soporte la opción de abrir URls externas.");
+                },
+              ),
               _buildListTile(
                 "Que se yo que mas va aquí",
                 Icons.ac_unit_outlined,
