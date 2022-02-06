@@ -29,6 +29,8 @@ dependencies:
     git:
       url: https://github.com/Aidyl98/circular_menu
       ref: develop
+  
+  pushable_button: ^0.0.3
 
   # Utils
   faker: ^2.0.0
