@@ -29,7 +29,7 @@ dependencies:
     git:
       url: https://github.com/Aidyl98/circular_menu
       ref: develop
-  
+  font_awesome_flutter: ^9.2.0
   pushable_button: ^0.0.3
 
   # Utils
