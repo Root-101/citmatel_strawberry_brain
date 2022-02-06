@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
@@ -15,6 +16,7 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -27,9 +29,10 @@ class DashBoard extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
+              _buildTitle(context, size),
               _buildSettingsButton(),
-              _buildHintText(),
-              _buildMultiMenu(context),
+              //  _buildHintText(),
+              _buildMultiMenu(context, size),
               //     _buildMainOptions(),
             ],
           ),
@@ -61,9 +64,37 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  _buildMultiMenu(BuildContext context) {
+  _buildTitle(BuildContext context, Size size) {
+    return Positioned(
+      top: size.height / 13,
+      left: size.width / 6,
+      right: size.width / 6,
+      child: AutoSizeText(
+        'Áethlos',
+        style: TextStyle(
+          fontFamily: 'Lobster',
+          fontSize: 90,
+          shadows: [
+            Shadow(
+              color: Colors.blue,
+              blurRadius: 10.0,
+              offset: Offset(5.0, 5.0),
+            ),
+            Shadow(
+              color: Colors.red,
+              blurRadius: 10.0,
+              offset: Offset(-5.0, 5.0),
+            ),
+          ],
+        ),
+        maxLines: 1,
+      ),
+    );
+  }
+
+  _buildMultiMenu(BuildContext context, Size size) {
     GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
-    Size size = MediaQuery.of(context).size;
+
     bool openClose = true;
     return Padding(
       padding: EdgeInsets.only(
