@@ -8,6 +8,7 @@ import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
 import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animator/flutter_animator.dart';
 import 'package:get/get.dart';
 import 'package:pushable_button/pushable_button.dart';
 
@@ -69,25 +70,27 @@ class DashBoard extends StatelessWidget {
       top: size.height / 13,
       left: size.width / 6,
       right: size.width / 6,
-      child: AutoSizeText(
-        'Áethlos',
-        style: TextStyle(
-          fontFamily: 'Lobster',
-          fontSize: 90,
-          shadows: [
-            Shadow(
-              color: Colors.blue,
-              blurRadius: 10.0,
-              offset: Offset(5.0, 5.0),
-            ),
-            Shadow(
-              color: Colors.red,
-              blurRadius: 10.0,
-              offset: Offset(-5.0, 5.0),
-            ),
-          ],
+      child: BounceInDown(
+        child: AutoSizeText(
+          'Áethlos',
+          style: TextStyle(
+            fontFamily: 'Lobster',
+            fontSize: 90,
+            shadows: [
+              Shadow(
+                color: Colors.blue,
+                blurRadius: 10.0,
+                offset: Offset(5.0, 5.0),
+              ),
+              Shadow(
+                color: Colors.red,
+                blurRadius: 10.0,
+                offset: Offset(-5.0, 5.0),
+              ),
+            ],
+          ),
+          maxLines: 1,
         ),
-        maxLines: 1,
       ),
     );
   }
