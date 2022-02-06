@@ -8,6 +8,7 @@ import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pushable_button/pushable_button.dart';
 
 class DashBoard extends StatelessWidget {
   DashBoard({Key? key}) : super(key: key);
@@ -84,31 +85,38 @@ class DashBoard extends StatelessWidget {
         startingAngleInRadian: pi * 0.25,
         endingAngleInRadian: pi * 0.75,
 
-        backgroundWidget: Center(
-          child: MaterialButton(
-            onPressed: () {
-              if (openClose) {
-                key.currentState!.forwardAnimation();
-                openClose = false;
-              } else {
-                key.currentState!.reverseAnimation();
-                openClose = true;
-              }
-            },
-            color: Colors.pink,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            padding: EdgeInsets.only(
-                bottom: 20,
-                left: size.width / 4,
-                top: 20,
-                right: size.width / 4),
-            child: Text(
-              'Jugar',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+        backgroundWidget: Positioned(
+          bottom: 20,
+          left: size.width / 5,
+          top: 20,
+          right: size.width / 5,
+          child: Center(
+            child: PushableButton(
+              child: Text(
+                'Jugar',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
+              height: size.height / 13,
+              elevation: 8,
+              hslColor: HSLColor.fromAHSL(1.0, 195, 1.0, 0.43),
+              shadow: BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 2),
+              ),
+              onPressed: () {
+                if (openClose) {
+                  key.currentState!.forwardAnimation();
+                  openClose = false;
+                } else {
+                  key.currentState!.reverseAnimation();
+                  openClose = true;
+                }
+              },
             ),
           ),
         ),
@@ -125,7 +133,7 @@ class DashBoard extends StatelessWidget {
             badgeRadius: 20,
             badgeTextColor: Colors.white,
             badgeTextStyle: TextStyle(
-              fontSize: 12,
+              fontSize: 17,
               fontWeight: FontWeight.bold,
             ),
             badgeLeftOffet: size.width / 6,
@@ -138,30 +146,12 @@ class DashBoard extends StatelessWidget {
             margin: 20,
             iconSize: 40,
             enableBadge: true,
-            badgeColor: Colors.lightBlueAccent,
-            badgeLabel: 'Ahorcado',
-            badgeRadius: 20,
-            badgeTextColor: Colors.white,
-            badgeTextStyle: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-            ),
-            badgeLeftOffet: size.width / 6,
-            badgeTopOffet: 0,
-            icon: Icons.sentiment_very_dissatisfied_outlined,
-            color: Colors.blue,
-            onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
-          ),
-          CircularMenuItem(
-            margin: 20,
-            iconSize: 40,
-            enableBadge: true,
             badgeColor: Colors.amber,
             badgeLabel: 'Trivia',
             badgeRadius: 20,
             badgeTextColor: Colors.white,
             badgeTextStyle: TextStyle(
-              fontSize: 12,
+              fontSize: 17,
               fontWeight: FontWeight.bold,
             ),
             badgeLeftOffet: size.width / 6,
@@ -169,6 +159,24 @@ class DashBoard extends StatelessWidget {
             icon: Icons.format_list_numbered_outlined,
             color: Colors.orange,
             onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
+          ),
+          CircularMenuItem(
+            margin: 20,
+            iconSize: 40,
+            enableBadge: true,
+            badgeColor: Colors.lightBlueAccent,
+            badgeLabel: 'Ahorcado',
+            badgeRadius: 20,
+            badgeTextColor: Colors.white,
+            badgeTextStyle: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+            badgeLeftOffet: size.width / 6,
+            badgeTopOffet: 0,
+            icon: Icons.sentiment_very_dissatisfied_outlined,
+            color: Colors.blue,
+            onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
           ),
         ],
       ),
