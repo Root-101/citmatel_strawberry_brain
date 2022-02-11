@@ -62,15 +62,11 @@ class SplashScreen extends StatelessWidget {
 class BrainMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.changeTheme(ThemeData.dark());
     return GetMaterialApp(
       title: 'Playing App',
       debugShowCheckedModeBanner: false,
       //--------------------- <THEAMING> -----------------------------------
       theme: _buildTheme(),
-      darkTheme: _buildTheme().copyWith(
-        brightness: Brightness.dark,
-      ),
       //--------------------- </THEAMING> -----------------------------------
       //--------------------- <PAGINATION> -----------------------------------
       initialRoute: HomePage.ROUTE_NAME,
@@ -109,6 +105,8 @@ class BrainMaterialApp extends StatelessWidget {
   }
 
   ThemeData _buildTheme() {
+    const String FONT_FAMILY_CHOCOLATE = "Chocolate";
+
     return ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
 
@@ -127,10 +125,10 @@ class BrainMaterialApp extends StatelessWidget {
       textTheme: const TextTheme(
         //utilizado para el texto de los diferentes temas
         headline6: const TextStyle(
-          fontFamily: 'Lobster',
-          fontSize: 30,
-          color: Colors.black,
-          shadows: [
+          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontWeight: FontWeight.bold,
+          fontSize: 40,
+          /*shadows: [
             Shadow(
               color: Colors.blue,
               blurRadius: 10.0,
@@ -141,24 +139,24 @@ class BrainMaterialApp extends StatelessWidget {
               blurRadius: 10.0,
               offset: Offset(-5.0, 5.0),
             ),
-          ],
+          ],*/
         ),
         //utilizado para el header del tutorial
         subtitle1: TextStyle(
           fontSize: 50.0,
-          fontFamily: 'Chocolate',
+          fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
         ),
         //utilizado para los tiles
         subtitle2: TextStyle(
           fontSize: 35.0,
-          fontFamily: 'Chocolate',
+          fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
         ),
         //para el texto del tutorial
         bodyText1: TextStyle(
           fontSize: 35.0,
-          fontFamily: 'Chocolate',
+          fontFamily: FONT_FAMILY_CHOCOLATE,
         ),
         bodyText2: TextStyle(
           fontSize: 14.0,
