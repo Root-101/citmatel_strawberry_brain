@@ -40,7 +40,7 @@ class SplashScreen extends StatelessWidget {
             color: Colors.blueAccent,
             child: SplashScreenClient1(),
           ),
-          duration: 13,
+          duration: 9,
         ),
         SingleSplashModel(
           splash: Container(
