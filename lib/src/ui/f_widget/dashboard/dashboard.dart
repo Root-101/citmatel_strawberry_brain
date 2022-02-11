@@ -30,10 +30,10 @@ class DashBoard extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              _buildTitle(context, size),
+              _buildTitle(size),
               _buildSettingsButton(),
               //  _buildHintText(),
-              _buildMultiMenu(context, size),
+              _buildMultiMenu(size),
               //     _buildMainOptions(),
             ],
           ),
@@ -65,17 +65,18 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  _buildTitle(BuildContext context, Size size) {
+  _buildTitle(Size size) {
     return Positioned(
-      top: size.height / 13,
-      left: size.width / 6,
+      left: size.width / 4.5, //TODO: con 0 no funciona
       right: size.width / 6,
+      top: size.height / 13,
       child: BounceInDown(
         child: AutoSizeText(
-          'Áethlos',
+          'Áthlos',
           style: TextStyle(
             fontFamily: 'Lobster',
             fontSize: 90,
+            color: Colors.black,
             shadows: [
               Shadow(
                 color: Colors.blue,
@@ -95,7 +96,7 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  _buildMultiMenu(BuildContext context, Size size) {
+  _buildMultiMenu(Size size) {
     GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
 
     bool openClose = true;
