@@ -83,6 +83,12 @@ flutter:
       fonts:
         - asset: assets/fonts/Lobster-Regular.ttf
           weight: 400
+    - family: Chocolate
+      fonts:
+        - asset: assets/fonts/chocolate_covered_raindrops.ttf
+          weight: 600
+        - asset: assets/fonts/chocolate_covered_raindrops_bold.ttf
+          weight: 800
 
   assets:
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
