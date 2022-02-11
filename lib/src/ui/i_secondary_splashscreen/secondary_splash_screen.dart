@@ -73,7 +73,7 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
     return Positioned(
       right: 10.0,
       bottom: 10.0,
-      child: ElevatedButton(
+      child: TextButton(
         onPressed: () {
           setState(() {
             done = true;
@@ -108,19 +108,21 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
   }
 
   _buildCircleIndicator() {
-    return Positioned(
-      left: 0.0,
-      right: 0.0,
-      bottom: 0.0,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CirclePageIndicator(
-          size: 10,
-          selectedSize: 12,
-          itemCount: widget.splashes.length,
-          currentPageNotifier: _currentPageNotifier,
-        ),
-      ),
-    );
+    return widget.splashes.length > 1
+        ? Positioned(
+            left: 0.0,
+            right: 0.0,
+            bottom: 0.0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CirclePageIndicator(
+                size: 10,
+                selectedSize: 12,
+                itemCount: widget.splashes.length,
+                currentPageNotifier: _currentPageNotifier,
+              ),
+            ),
+          )
+        : Container();
   }
 }

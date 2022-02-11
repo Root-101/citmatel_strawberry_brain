@@ -42,7 +42,7 @@ class SplashScreen extends StatelessWidget {
           ),
           duration: 9,
         ),
-        SingleSplashModel(
+        /*SingleSplashModel(
           splash: Container(
             decoration: BoxDecoration(
               color: Colors.transparent, //pa si por si acaso
@@ -53,7 +53,7 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           duration: 5,
-        ),
+        ),*/
       ],
     );
   }

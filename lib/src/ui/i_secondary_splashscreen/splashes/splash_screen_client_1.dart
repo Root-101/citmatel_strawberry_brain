@@ -1,4 +1,5 @@
 import 'package:citmatel_strawberry_brain/assets/brain_assets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -34,11 +35,17 @@ class _SplashScreenClient1State extends State<SplashScreenClient1> {
   Widget build(BuildContext context) {
     return Center(
       child: _controller.value.isInitialized
-          ? AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
+          ? SizedBox.expand(
+              child: Container(
+                color: Colors.black,
+                child: VideoPlayer(
+                  _controller,
+                ),
+              ),
             )
-          : Container(),
+          : Container(
+              color: Colors.black,
+            ),
     );
   }
 }
