@@ -66,11 +66,7 @@ class BrainMaterialApp extends StatelessWidget {
       title: 'Playing App',
       debugShowCheckedModeBanner: false,
       //--------------------- <THEAMING> -----------------------------------
-      darkTheme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.deepOrange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: _buildTheme(),
       //--------------------- </THEAMING> -----------------------------------
       //--------------------- <PAGINATION> -----------------------------------
       initialRoute: HomePage.ROUTE_NAME,
@@ -105,6 +101,67 @@ class BrainMaterialApp extends StatelessWidget {
           name: UnknownRouteScreen.ROUTE_NAME,
           page: () => UnknownRouteScreen()),
       //--------------------- </PAGINATION> -----------------------------------
+    );
+  }
+
+  ThemeData _buildTheme() {
+    const String FONT_FAMILY_CHOCOLATE = "Chocolate";
+
+    return ThemeData(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+
+      // Define the default brightness and colors.
+      colorScheme: ColorScheme.dark(
+        brightness: Brightness.dark,
+        primary: Colors.purple,
+        secondary: Colors.deepOrange,
+      ),
+
+      // Define the default font family.
+      //fontFamily: 'Georgia',
+
+      // Define the default `TextTheme`. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: const TextTheme(
+        //utilizado para el texto de los diferentes temas
+        headline6: const TextStyle(
+          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontWeight: FontWeight.bold,
+          fontSize: 40,
+          /*shadows: [
+            Shadow(
+              color: Colors.blue,
+              blurRadius: 10.0,
+              offset: Offset(5.0, 5.0),
+            ),
+            Shadow(
+              color: Colors.red,
+              blurRadius: 10.0,
+              offset: Offset(-5.0, 5.0),
+            ),
+          ],*/
+        ),
+        //utilizado para el header del tutorial
+        subtitle1: TextStyle(
+          fontSize: 50.0,
+          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontWeight: FontWeight.bold,
+        ),
+        //utilizado para los tiles
+        subtitle2: TextStyle(
+          fontSize: 35.0,
+          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontWeight: FontWeight.bold,
+        ),
+        //para el texto del tutorial
+        bodyText1: TextStyle(
+          fontSize: 35.0,
+          fontFamily: FONT_FAMILY_CHOCOLATE,
+        ),
+        bodyText2: TextStyle(
+          fontSize: 14.0,
+        ),
+      ),
     );
   }
 }
