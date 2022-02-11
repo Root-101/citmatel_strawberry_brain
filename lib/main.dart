@@ -62,14 +62,14 @@ class SplashScreen extends StatelessWidget {
 class BrainMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Get.changeTheme(ThemeData.dark());
     return GetMaterialApp(
       title: 'Playing App',
       debugShowCheckedModeBanner: false,
       //--------------------- <THEAMING> -----------------------------------
-      darkTheme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.deepOrange,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      theme: _buildTheme(),
+      darkTheme: _buildTheme().copyWith(
+        brightness: Brightness.dark,
       ),
       //--------------------- </THEAMING> -----------------------------------
       //--------------------- <PAGINATION> -----------------------------------
@@ -105,6 +105,65 @@ class BrainMaterialApp extends StatelessWidget {
           name: UnknownRouteScreen.ROUTE_NAME,
           page: () => UnknownRouteScreen()),
       //--------------------- </PAGINATION> -----------------------------------
+    );
+  }
+
+  ThemeData _buildTheme() {
+    return ThemeData(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+
+      // Define the default brightness and colors.
+      colorScheme: ColorScheme.dark(
+        brightness: Brightness.dark,
+        primary: Colors.purple,
+        secondary: Colors.deepOrange,
+      ),
+
+      // Define the default font family.
+      //fontFamily: 'Georgia',
+
+      // Define the default `TextTheme`. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: const TextTheme(
+        //utilizado para el texto de los diferentes temas
+        headline6: const TextStyle(
+          fontFamily: 'Lobster',
+          fontSize: 30,
+          color: Colors.black,
+          shadows: [
+            Shadow(
+              color: Colors.blue,
+              blurRadius: 10.0,
+              offset: Offset(5.0, 5.0),
+            ),
+            Shadow(
+              color: Colors.red,
+              blurRadius: 10.0,
+              offset: Offset(-5.0, 5.0),
+            ),
+          ],
+        ),
+        //utilizado para el header del tutorial
+        subtitle1: TextStyle(
+          fontSize: 50.0,
+          fontFamily: 'Chocolate',
+          fontWeight: FontWeight.bold,
+        ),
+        //utilizado para los tiles
+        subtitle2: TextStyle(
+          fontSize: 35.0,
+          fontFamily: 'Chocolate',
+          fontWeight: FontWeight.bold,
+        ),
+        //para el texto del tutorial
+        bodyText1: TextStyle(
+          fontSize: 35.0,
+          fontFamily: 'Chocolate',
+        ),
+        bodyText2: TextStyle(
+          fontSize: 14.0,
+        ),
+      ),
     );
   }
 }
