@@ -142,8 +142,10 @@ class BrainMaterialApp extends StatelessWidget {
           ],*/
         ),
         //utilizado para el header del tutorial
+        //cambiar el tutorial para bodyText
+        //usado ahora para el cargando
         subtitle1: TextStyle(
-          fontSize: 50.0,
+          fontSize: 40.0,
           fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
         ),
@@ -155,8 +157,8 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         //para el texto del tutorial
         bodyText1: TextStyle(
-          fontSize: 35.0,
-          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontSize: 20.0,
+          //fontFamily: FONT_FAMILY_CHOCOLATE,
         ),
         bodyText2: TextStyle(
           fontSize: 14.0,
