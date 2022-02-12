@@ -106,6 +106,7 @@ class BrainMaterialApp extends StatelessWidget {
 
   ThemeData _buildTheme() {
     const String FONT_FAMILY_CHOCOLATE = "Chocolate";
+    const String FONT_FAMILY_LOBSTER = "Lobster";
 
     return ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -123,7 +124,24 @@ class BrainMaterialApp extends StatelessWidget {
       // Define the default `TextTheme`. Use this to specify the default
       // text styling for headlines, titles, bodies of text, and more.
       textTheme: const TextTheme(
-        //utilizado para el texto de los diferentes temas
+        //utilizado para el texto principal del juego
+        headline1: TextStyle(
+          fontFamily: FONT_FAMILY_LOBSTER,
+          fontSize: 90,
+          color: Color(0xff2a3762),
+          shadows: [
+            Shadow(
+              color: Colors.blue,
+              blurRadius: 10.0,
+              offset: Offset(3.0, 3.0),
+            ),
+            Shadow(
+              color: Colors.red,
+              blurRadius: 10.0,
+              offset: Offset(-3.0, 3.0),
+            ),
+          ],
+        ),
         headline6: const TextStyle(
           fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,

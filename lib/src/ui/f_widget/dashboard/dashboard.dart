@@ -73,23 +73,7 @@ class DashBoard extends StatelessWidget {
       child: BounceInDown(
         child: AutoSizeText(
           'Áthlos',
-          style: TextStyle(
-            fontFamily: 'Lobster',
-            fontSize: 90,
-            color: Color(0xff2a3762),
-            shadows: [
-              Shadow(
-                color: Colors.blue,
-                blurRadius: 10.0,
-                offset: Offset(3.0, 3.0),
-              ),
-              Shadow(
-                color: Colors.red,
-                blurRadius: 10.0,
-                offset: Offset(-3.0, 3.0),
-              ),
-            ],
-          ),
+          style: Get.theme.textTheme.headline1,
           maxLines: 1,
         ),
       ),
