@@ -76,17 +76,17 @@ class DashBoard extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Lobster',
             fontSize: 90,
-            color: Colors.black,
+            color: Color(0xff2a3762),
             shadows: [
               Shadow(
                 color: Colors.blue,
                 blurRadius: 10.0,
-                offset: Offset(5.0, 5.0),
+                offset: Offset(3.0, 3.0),
               ),
               Shadow(
                 color: Colors.red,
                 blurRadius: 10.0,
-                offset: Offset(-5.0, 5.0),
+                offset: Offset(-3.0, 3.0),
               ),
             ],
           ),
@@ -129,10 +129,8 @@ class DashBoard extends StatelessWidget {
             child: PushableButton(
               child: Text(
                 'Jugar',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+                style: Get.theme.textTheme.bodyText2
+                    ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               height: size.height / 13,
               elevation: 8,
@@ -163,7 +161,7 @@ class DashBoard extends StatelessWidget {
             margin: 20,
             iconSize: 40,
             enableBadge: true,
-            badgeColor: Colors.lightGreenAccent,
+            badgeColor: Colors.amber,
             badgeLabel: 'Puzzle',
             badgeRadius: 20,
             badgeTextColor: Colors.white,
@@ -174,14 +172,14 @@ class DashBoard extends StatelessWidget {
             badgeLeftOffet: size.width / 6,
             badgeTopOffet: 0,
             icon: Icons.extension,
-            color: Colors.green,
+            color: Colors.orange,
             onTap: () => Get.toNamed(DnDLevelsScreen.ROUTE_NAME),
           ),
           CircularMenuItem(
             margin: 20,
             iconSize: 40,
             enableBadge: true,
-            badgeColor: Colors.amber,
+            badgeColor: Color(0xffff71ab),
             badgeLabel: 'Trivia',
             badgeRadius: 20,
             badgeTextColor: Colors.white,
@@ -192,7 +190,7 @@ class DashBoard extends StatelessWidget {
             badgeLeftOffet: size.width / 6,
             badgeTopOffet: 0,
             icon: Icons.format_list_numbered_outlined,
-            color: Colors.orange,
+            color: Color(0xfff4629a),
             onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
           ),
           CircularMenuItem(
