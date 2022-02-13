@@ -96,7 +96,7 @@ class DashBoard extends StatelessWidget {
         toggleButtonColor: Colors.transparent,
         toggleButtonIconColor: Colors.transparent,
         toggleButtonPadding: 0,
-        radius: 150,
+        radius: size.width / 2.5,
 
         // animation curve in forward
         curve: Curves.bounceOut,
@@ -107,9 +107,8 @@ class DashBoard extends StatelessWidget {
         endingAngleInRadian: pi * 0.75,
 
         backgroundWidget: Positioned(
-          bottom: 20,
+          top: size.height / 4.2,
           left: size.width / 5,
-          top: 20,
           right: size.width / 5,
           child: Center(
             child: PushableButton(
