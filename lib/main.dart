@@ -166,6 +166,7 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         //utilizado para:
         // - el header del tutorial
+        // - la letra inicial en el trivia
         subtitle1: TextStyle(
           fontSize: 35.0,
           fontWeight: FontWeight.bold,
@@ -173,12 +174,18 @@ class BrainMaterialApp extends StatelessWidget {
         //utilizado para:
         // - los header de los subniveles
         // - Los badges de los modulos en los botones iniciales
+        // - los card con las letras en el ahorcado
+        // - La pregunta en el trivia
+        // - las respuestas en el trivia
+        // - el texto en el appbar de cada modulo(sale todo por tools)
+        // - el contador de estrellas de cada nivel(5 / 10 *)
         subtitle2: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
         ),
         //utilizado para:
         // - el texto del tutorial
+        // - los segundos restantes en el contador de trivia
         bodyText1: TextStyle(
           fontSize: 20.0,
         ),
