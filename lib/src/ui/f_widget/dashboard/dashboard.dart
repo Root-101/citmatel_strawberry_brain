@@ -17,7 +17,6 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -30,10 +29,10 @@ class DashBoard extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              _buildTitle(size),
+              _buildTitle(),
               _buildSettingsButton(),
               //  _buildHintText(),
-              _buildMultiMenu(size),
+              _buildMultiMenu(),
               //     _buildMainOptions(),
             ],
           ),
@@ -65,7 +64,8 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  _buildTitle(Size size) {
+  _buildTitle() {
+    Size size = Get.size;
     return Positioned(
       left: size.width / 4.5, //TODO: con 0 no funciona
       right: size.width / 6,
@@ -73,33 +73,18 @@ class DashBoard extends StatelessWidget {
       child: BounceInDown(
         child: AutoSizeText(
           'Áthlos',
-          style: TextStyle(
-            fontFamily: 'Lobster',
-            fontSize: 90,
-            color: Color(0xff2a3762),
-            shadows: [
-              Shadow(
-                color: Colors.blue,
-                blurRadius: 10.0,
-                offset: Offset(3.0, 3.0),
-              ),
-              Shadow(
-                color: Colors.red,
-                blurRadius: 10.0,
-                offset: Offset(-3.0, 3.0),
-              ),
-            ],
-          ),
+          style: Get.theme.textTheme.headline1,
           maxLines: 1,
         ),
       ),
     );
   }
 
-  _buildMultiMenu(Size size) {
+  _buildMultiMenu() {
+    Size size = Get.size;
     GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
-
     bool openClose = true;
+
     return Padding(
       padding: EdgeInsets.only(
         top: size.height / 2.5,
@@ -129,8 +114,7 @@ class DashBoard extends StatelessWidget {
             child: PushableButton(
               child: Text(
                 'Jugar',
-                style: Get.theme.textTheme.bodyText2
-                    ?.copyWith(fontWeight: FontWeight.bold, fontSize: 25),
+                style: Get.theme.textTheme.subtitle2,
               ),
               height: size.height / 13,
               elevation: 8,
@@ -157,62 +141,55 @@ class DashBoard extends StatelessWidget {
         key: key,
 
         items: [
-          CircularMenuItem(
-            margin: 20,
-            iconSize: 40,
-            enableBadge: true,
-            badgeColor: Colors.amber,
+          _buildCircularMenuItem(
             badgeLabel: 'Puzzle',
-            badgeRadius: 20,
-            badgeTextColor: Colors.white,
-            badgeTextStyle: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-            ),
-            badgeLeftOffet: size.width / 6,
-            badgeTopOffet: 0,
-            icon: Icons.extension,
             color: Colors.orange,
+            badgeColor: Colors.amber,
+            icon: Icons.extension,
             onTap: () => Get.toNamed(DnDLevelsScreen.ROUTE_NAME),
           ),
-          CircularMenuItem(
-            margin: 20,
-            iconSize: 40,
-            enableBadge: true,
-            badgeColor: Color(0xffff71ab),
+          _buildCircularMenuItem(
             badgeLabel: 'Trivia',
-            badgeRadius: 20,
-            badgeTextColor: Colors.white,
-            badgeTextStyle: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-            ),
-            badgeLeftOffet: size.width / 6,
-            badgeTopOffet: 0,
-            icon: Icons.format_list_numbered_outlined,
             color: Color(0xfff4629a),
+            badgeColor: Color(0xffff71ab),
+            icon: Icons.format_list_numbered_outlined,
             onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
           ),
-          CircularMenuItem(
-            margin: 20,
-            iconSize: 40,
-            enableBadge: true,
-            badgeColor: Colors.lightBlueAccent,
+          _buildCircularMenuItem(
             badgeLabel: 'Ahorcado',
-            badgeRadius: 20,
-            badgeTextColor: Colors.white,
-            badgeTextStyle: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-            ),
-            badgeLeftOffet: size.width / 6,
-            badgeTopOffet: 0,
-            icon: Icons.sentiment_very_dissatisfied_outlined,
             color: Colors.blue,
+            badgeColor: Colors.lightBlueAccent,
+            icon: Icons.sentiment_very_dissatisfied_outlined,
             onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
           ),
         ],
       ),
+    );
+  }
+
+  _buildCircularMenuItem({
+    required String badgeLabel,
+    required Color color,
+    required Color badgeColor,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return CircularMenuItem(
+      margin: 20,
+      iconSize: 40,
+      enableBadge: true,
+      badgeColor: badgeColor,
+      badgeLabel: badgeLabel,
+      badgeRadius: 20,
+      badgeTextColor: Colors.white,
+      badgeTextStyle: Get.textTheme.subtitle2?.copyWith(
+        fontSize: 17,
+      ),
+      badgeLeftOffet: Get.size.width / 6,
+      badgeTopOffet: 0,
+      icon: icon,
+      color: color,
+      onTap: onTap,
     );
   }
 }
