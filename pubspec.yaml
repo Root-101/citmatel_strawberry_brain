@@ -62,8 +62,7 @@ dev_dependencies:
 
 #configuration of splash screen, if something change, run: `flutter pub run flutter_native_splash:create`
 flutter_native_splash:
-  image: "assets/app_splash_initial.png"
-  color: "#0000FF"
+  background_image: "assets/app_splash_inicial.png"
 
 #configuration of flutter_icons, if something change, run: `flutter pub run flutter_launcher_icons:main`
 flutter_icons:
@@ -71,9 +70,9 @@ flutter_icons:
   ios: true
   image_path: "assets/app_icon.png"
 
-#configuration of flutter_icons, if something change, run: `flutter pub run flutter_app_name`
+#configuration of flutter_app_name, if something change, run: `flutter pub run flutter_app_name`
 flutter_app_name:
-  name: "BRAIN"
+  name: "Áthlos"
 
 flutter:
   uses-material-design: true
@@ -85,14 +84,12 @@ flutter:
           weight: 400
     - family: Chocolate
       fonts:
-        - asset: assets/fonts/chocolate_covered_raindrops.ttf
+        - asset: assets/fonts/chocolate_edited.otf
           weight: 600
-        - asset: assets/fonts/chocolate_covered_raindrops_bold.ttf
-          weight: 800
 
   assets:
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
-    - packages/citmatel_strawberry_brain/assets/character/background_main.jpg
+    - packages/citmatel_strawberry_brain/assets/character/background_main.png
 
     - packages/citmatel_strawberry_brain/assets/app/client_splash_1.mp4
     - packages/citmatel_strawberry_brain/assets/app/client_logo.png

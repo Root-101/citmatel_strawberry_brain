@@ -6,7 +6,7 @@ class BrainAssets {
   static const String CHARACTER_BACKGROUND_DASHBOARD =
       "$_character/background_dashboard.jpg";
   static const String CHARACTER_BACKGROUND_MAIN =
-      "$_character/background_main.jpg";
+      "$_character/background_main.png";
 
   static const String APP_CLIENT_LOGO = "$_app/client_logo.png";
   static const String APP_DEV_LOGO_FLAT = "$_app/dev_logo_flat.png";
