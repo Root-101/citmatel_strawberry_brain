@@ -162,20 +162,21 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         //utilizado para el header del tutorial
         subtitle1: TextStyle(
-          fontSize: 40.0,
+          fontSize: 35.0,
           fontWeight: FontWeight.bold,
         ),
-        //utilizado para los tiles
+        //utilizado para los header de los subniveles
         subtitle2: TextStyle(
-          fontSize: 35.0,
+          fontSize: 25.0,
           fontWeight: FontWeight.bold,
         ),
         //para el texto del tutorial
         bodyText1: TextStyle(
           fontSize: 20.0,
         ),
+        //utilizado para el texto de los subniveles
         bodyText2: TextStyle(
-          fontSize: 14.0,
+          fontSize: 15.0,
         ),
       ),
     );
