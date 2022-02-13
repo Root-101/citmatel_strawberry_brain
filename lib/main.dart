@@ -115,8 +115,8 @@ class BrainMaterialApp extends StatelessWidget {
       // Define the default brightness and colors.
       colorScheme: ColorScheme.dark(
         brightness: Brightness.dark,
-        primary: Colors.purple,
-        secondary: Colors.deepOrange,
+        primary: Color(0xff00a4db),
+        secondary: Color(0xff002edb),
       ),
 
       // Define the default font family.
