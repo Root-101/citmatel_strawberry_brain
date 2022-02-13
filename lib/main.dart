@@ -105,8 +105,9 @@ class BrainMaterialApp extends StatelessWidget {
   }
 
   ThemeData _buildTheme() {
-    const String FONT_FAMILY_CHOCOLATE = "Chocolate";
     const String FONT_FAMILY_LOBSTER = "Lobster";
+    const String FONT_FAMILY_AKAYA = "AkayaTelivigala";
+    const String FONT_FAMILY_SLAB = "RobotoSlab";
 
     return ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -119,7 +120,7 @@ class BrainMaterialApp extends StatelessWidget {
       ),
 
       // Define the default font family.
-      //fontFamily: 'Georgia',
+      fontFamily: FONT_FAMILY_SLAB,
 
       // Define the default `TextTheme`. Use this to specify the default
       // text styling for headlines, titles, bodies of text, and more.
@@ -146,23 +147,23 @@ class BrainMaterialApp extends StatelessWidget {
         // - el cargando
         // - los carteles de win/loose
         headline4: const TextStyle(
-          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontFamily: FONT_FAMILY_AKAYA,
           fontWeight: FontWeight.bold,
           fontSize: 70,
         ),
         //utilizado para:
         // - el nombre de los modulos
         headline5: const TextStyle(
-          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontFamily: FONT_FAMILY_AKAYA,
           fontWeight: FontWeight.bold,
-          fontSize: 40,
+          fontSize: 33,
         ),
         //utilizado para :
         // - el tile de la seleccion
         headline6: const TextStyle(
-          fontFamily: FONT_FAMILY_CHOCOLATE,
+          fontFamily: FONT_FAMILY_AKAYA,
           fontWeight: FontWeight.bold,
-          fontSize: 40,
+          fontSize: 30,
         ),
         //utilizado para:
         // - el header del tutorial
