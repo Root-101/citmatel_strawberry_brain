@@ -162,7 +162,7 @@ class BrainMaterialApp extends StatelessWidget {
         // - el tile de la seleccion
         headline6: const TextStyle(
           fontFamily: FONT_FAMILY_AKAYA,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
           fontSize: 30,
         ),
         //utilizado para:
