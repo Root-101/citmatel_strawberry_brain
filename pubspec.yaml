@@ -84,14 +84,12 @@ flutter:
           weight: 400
     - family: Chocolate
       fonts:
-        - asset: assets/fonts/chocolate_covered_raindrops.ttf
+        - asset: assets/fonts/chocolate_edited.otf
           weight: 600
-        - asset: assets/fonts/chocolate_covered_raindrops_bold.ttf
-          weight: 800
 
   assets:
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
-    - packages/citmatel_strawberry_brain/assets/character/background_main.jpg
+    - packages/citmatel_strawberry_brain/assets/character/background_main.png
 
     - packages/citmatel_strawberry_brain/assets/app/client_splash_1.mp4
     - packages/citmatel_strawberry_brain/assets/app/client_logo.png

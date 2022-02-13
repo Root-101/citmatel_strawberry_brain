@@ -57,6 +57,7 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
     timer = Timer(Duration(seconds: current.duration), _nextSplash);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
           children: <Widget>[
