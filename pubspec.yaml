@@ -82,11 +82,14 @@ flutter:
       fonts:
         - asset: assets/fonts/Lobster-Regular.ttf
           weight: 400
-    - family: Chocolate
+    - family: AkayaTelivigala
       fonts:
-        - asset: assets/fonts/chocolate_edited.otf
-          weight: 600
-
+        - asset: assets/fonts/AkayaTelivigala-Regular.ttf
+          weight: 400
+    - family: RobotoSlab
+      fonts:
+        - asset: assets/fonts/RobotoSlab-Variable.ttf
+          weight: 400
   assets:
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
     - packages/citmatel_strawberry_brain/assets/character/background_main.png
