@@ -142,39 +142,48 @@ class BrainMaterialApp extends StatelessWidget {
             ),
           ],
         ),
-        //utilizado para el cargando y los carteles de win/loose, medianamente grande
+        //utilizado para:
+        // - el cargando
+        // - los carteles de win/loose
         headline4: const TextStyle(
           fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
           fontSize: 70,
         ),
-        //utilizado para el nombre de los modulos
+        //utilizado para:
+        // - el nombre de los modulos
         headline5: const TextStyle(
           fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
           fontSize: 40,
         ),
-        //utilizado para el tile de la seleccion
+        //utilizado para :
+        // - el tile de la seleccion
         headline6: const TextStyle(
           fontFamily: FONT_FAMILY_CHOCOLATE,
           fontWeight: FontWeight.bold,
           fontSize: 40,
         ),
-        //utilizado para el header del tutorial
+        //utilizado para:
+        // - el header del tutorial
         subtitle1: TextStyle(
           fontSize: 35.0,
           fontWeight: FontWeight.bold,
         ),
-        //utilizado para los header de los subniveles
+        //utilizado para:
+        // - los header de los subniveles
+        // - Los badges de los modulos en los botones iniciales
         subtitle2: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.bold,
         ),
-        //para el texto del tutorial
+        //utilizado para:
+        // - el texto del tutorial
         bodyText1: TextStyle(
           fontSize: 20.0,
         ),
-        //utilizado para el texto de los subniveles
+        //utilizado para:
+        // - el texto de los subniveles
         bodyText2: TextStyle(
           fontSize: 15.0,
         ),
