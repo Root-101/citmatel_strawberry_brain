@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.root101.citmatel_strawberry.brain.citmatel_strawberry_brain">
    <application
-        android:label="BRAIN"
+        android:label="Áthlos"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

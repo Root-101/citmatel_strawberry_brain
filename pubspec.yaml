@@ -63,7 +63,7 @@ dev_dependencies:
 #configuration of splash screen, if something change, run: `flutter pub run flutter_native_splash:create`
 flutter_native_splash:
   image: "assets/app_splash_initial.png"
-  color: "#0000FF"
+  color: "#FFFFFF"
 
 #configuration of flutter_icons, if something change, run: `flutter pub run flutter_launcher_icons:main`
 flutter_icons:
@@ -71,9 +71,9 @@ flutter_icons:
   ios: true
   image_path: "assets/app_icon.png"
 
-#configuration of flutter_icons, if something change, run: `flutter pub run flutter_app_name`
+#configuration of flutter_app_name, if something change, run: `flutter pub run flutter_app_name`
 flutter_app_name:
-  name: "BRAIN"
+  name: "Áthlos"
 
 flutter:
   uses-material-design: true
