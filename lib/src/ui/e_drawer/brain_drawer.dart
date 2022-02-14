@@ -22,33 +22,23 @@ class BrainDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // _buildListTile(
-              //   title: "Contáctanos por Google.",
-              //   icon: FontAwesomeIcons.google,
-              //   tapHandler: () async {
-              //     String url = "https://google.com";
-              //     if (!await launch(url))
-              //       Get.snackbar("Error lanzando URL",
-              //           "Error tratando de abrir la URL $url, es probable que el dispositivo no soporte la opción de abrir URls externas.");
-              //   },
-              // ),
-              _buildListTile(
-                title: "Contáctanos por Facebook.",
-                icon: FontAwesomeIcons.facebookF,
-                iconColor: Color.fromRGBO(66, 103, 178, 1),
-                tapHandler: () async {
-                  String url = "https://www.facebook.com/";
-                  if (!await launch(url))
-                    Get.snackbar("Error lanzando URL",
-                        "Error tratando de abrir la URL $url, es probable que el dispositivo no soporte la opción de abrir URls externas.");
-                },
-              ),
               _buildListTile(
                 title: "Contáctanos por Twitter.",
                 icon: FontAwesomeIcons.twitter,
                 iconColor: Color.fromRGBO(29, 161, 242, 1),
                 tapHandler: () async {
                   String url = "https://twitter.com/";
+                  if (!await launch(url))
+                    Get.snackbar("Error lanzando URL",
+                        "Error tratando de abrir la URL $url, es probable que el dispositivo no soporte la opción de abrir URls externas.");
+                },
+              ),
+              _buildListTile(
+                title: "Contáctanos por Facebook.",
+                icon: FontAwesomeIcons.facebookF,
+                iconColor: Color.fromRGBO(66, 103, 178, 1),
+                tapHandler: () async {
+                  String url = "https://www.facebook.com/";
                   if (!await launch(url))
                     Get.snackbar("Error lanzando URL",
                         "Error tratando de abrir la URL $url, es probable que el dispositivo no soporte la opción de abrir URls externas.");

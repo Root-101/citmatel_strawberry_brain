@@ -9,6 +9,7 @@ import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:pushable_button/pushable_button.dart';
 
@@ -43,15 +44,16 @@ class DashBoard extends StatelessWidget {
   }
 
   _buildSettingsButton() {
+    Size size = Get.size;
     return Positioned(
       left: 10,
       top: 10,
-      child: StrawberryWidgets.circularButtonWithIcon(
+      child: IconButton(
         onPressed: Get.find<BrainZoomDrawerController>().toggleDrawer,
-        backgroundColor: Colors.transparent,
-        child: StrawberryWidgets.normalIcon(
-          icon: Icons.settings,
-          iconColor: Colors.black,
+        icon: FaIcon(
+          FontAwesomeIcons.cogs,
+          color: Colors.black87,
+          size: size.width / 13,
         ),
       ),
     );
