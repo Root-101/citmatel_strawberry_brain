@@ -11,4 +11,5 @@ class BrainAssets {
   static const String APP_CLIENT_LOGO = "$_app/client_logo.png";
   static const String APP_DEV_LOGO_FLAT = "$_app/dev_logo_flat.png";
   static const String APP_CLIENT_SPLASH_1 = "$_app/client_splash_1.mp4";
+  static const String APP_LIBRERIA = "$_app/libreria.png";
 }
