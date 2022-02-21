@@ -22,17 +22,7 @@ class BrainDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildListTile(
-                title: "Librería Virtual.",
-                leading: Image.asset(
-                  BrainAssets.APP_LIBRERIA,
-                  width: 30,
-                  height: 30,
-                ),
-                tapHandler: () =>
-                    _openURL("https://www.superfacil.cu/libreria"),
-              ),
-              _buildListTile(
-                title: "Contáctanos por Twitter.",
+                title: "Twitter.",
                 leading: Icon(
                   FontAwesomeIcons.twitter,
                   size: 30,
@@ -42,7 +32,7 @@ class BrainDrawer extends StatelessWidget {
                     _openURL("https://www.twitter.com/@libreriavcuba"),
               ),
               _buildListTile(
-                title: "Contáctanos por Facebook.",
+                title: "Facebook.",
                 leading: Icon(
                   FontAwesomeIcons.facebookF,
                   size: 30,
@@ -50,6 +40,16 @@ class BrainDrawer extends StatelessWidget {
                 ),
                 tapHandler: () =>
                     _openURL("https://www.facebook.com/LibreriaVirtual"),
+              ),
+              _buildListTile(
+                title: "Librería Virtual.",
+                leading: Image.asset(
+                  BrainAssets.APP_LIBRERIA,
+                  width: 30,
+                  height: 30,
+                ),
+                tapHandler: () =>
+                    _openURL("https://www.superfacil.cu/libreria"),
               ),
               _buildListTile(
                 title: "Sobre nosotros...",
