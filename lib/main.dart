@@ -38,7 +38,10 @@ class SplashScreen extends StatelessWidget {
         SingleSplashModel(
           splash: Container(
             color: Colors.blueAccent,
-            child: SplashScreenClient1(),
+            child: SplashScreenClient1(
+              //TODO Get the mute value from the data base.
+              mute: false,
+            ),
           ),
           duration: 9,
         ),
@@ -83,17 +86,23 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         GetPage(
           name: DnDLevelsScreen.ROUTE_NAME,
-          page: () => DnDLevelsScreen(),
+          page: () => DnDLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: HangManLevelsScreen.ROUTE_NAME,
-          page: () => HangManLevelsScreen(),
+          page: () => HangManLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: TriviaLevelsScreen.ROUTE_NAME,
-          page: () => TriviaLevelsScreen(),
+          page: () => TriviaLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
       ],

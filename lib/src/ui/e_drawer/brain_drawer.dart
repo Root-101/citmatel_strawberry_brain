@@ -1,10 +1,23 @@
-import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class BrainDrawer extends StatelessWidget {
+import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+
+// ignore: must_be_immutable
+class BrainDrawer extends StatefulWidget {
+  bool mute;
+
+  BrainDrawer({
+    Key? key,
+    required this.mute,
+  }) : super(key: key);
+  @override
+  State<BrainDrawer> createState() => _BrainDrawerState();
+}
+
+class _BrainDrawerState extends State<BrainDrawer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +34,22 @@ class BrainDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _buildListTile(
+                title: "Sonido",
+                leading: Icon(
+                  widget.mute
+                      ? Icons.volume_off_rounded
+                      : Icons.volume_up_rounded,
+                  size: 35,
+                  color: Colors.blue.shade900,
+                ),
+                tapHandler: () {
+                  setState(() {
+                    //TODO change the mute property in the data base to.
+                    widget.mute = !widget.mute;
+                  });
+                },
+              ),
               _buildListTile(
                 title: "Twitter.",
                 leading: Icon(

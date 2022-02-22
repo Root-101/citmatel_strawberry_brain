@@ -1,10 +1,14 @@
 import 'package:citmatel_strawberry_brain/assets/brain_assets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreenClient1 extends StatefulWidget {
-  const SplashScreenClient1({Key? key}) : super(key: key);
+  final bool mute;
+
+  const SplashScreenClient1({
+    Key? key,
+    required this.mute,
+  }) : super(key: key);
 
   @override
   _SplashScreenClient1State createState() => _SplashScreenClient1State();
@@ -26,6 +30,7 @@ class _SplashScreenClient1State extends State<SplashScreenClient1> {
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {
+          widget.mute ? _controller.setVolume(0.0) : _controller.setVolume(1.0);
           _controller.play();
         });
       });
