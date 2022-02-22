@@ -38,7 +38,10 @@ class SplashScreen extends StatelessWidget {
         SingleSplashModel(
           splash: Container(
             color: Colors.blueAccent,
-            child: SplashScreenClient1(),
+            child: SplashScreenClient1(
+              //TODO Get the mute value from the data base.
+              mute: false,
+            ),
           ),
           duration: 9,
         ),
