@@ -5,7 +5,6 @@ import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
-import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
@@ -14,7 +13,11 @@ import 'package:get/get.dart';
 import 'package:pushable_button/pushable_button.dart';
 
 class DashBoard extends StatelessWidget {
-  DashBoard({Key? key}) : super(key: key);
+  bool mute;
+  DashBoard({
+    Key? key,
+    required this.mute,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -148,21 +151,36 @@ class DashBoard extends StatelessWidget {
             color: DnDUIModule.PRIMARY_COLOR,
             badgeColor: DnDUIModule.SECONDARY_COLOR,
             icon: DnDUIModule.ICON,
-            onTap: () => Get.toNamed(DnDLevelsScreen.ROUTE_NAME),
+            onTap: () => Get.toNamed(
+              DnDLevelsScreen.ROUTE_NAME,
+              arguments: {
+                'mute': mute,
+              },
+            ),
           ),
           _buildCircularMenuItem(
             badgeLabel: TriviaUIModule.MODULE_NAME,
             color: TriviaUIModule.PRIMARY_COLOR,
             badgeColor: TriviaUIModule.SECONDARY_COLOR,
             icon: TriviaUIModule.ICON,
-            onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
+            onTap: () => Get.toNamed(
+              TriviaLevelsScreen.ROUTE_NAME,
+              arguments: {
+                'mute': mute,
+              },
+            ),
           ),
           _buildCircularMenuItem(
             badgeLabel: HangManUIModule.MODULE_NAME,
             color: HangManUIModule.PRIMARY_COLOR,
             badgeColor: HangManUIModule.SECONDARY_COLOR,
             icon: HangManUIModule.ICON,
-            onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
+            onTap: () => Get.toNamed(
+              HangManLevelsScreen.ROUTE_NAME,
+              arguments: {
+                'mute': mute,
+              },
+            ),
           ),
         ],
       ),
