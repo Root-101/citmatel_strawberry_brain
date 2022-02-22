@@ -83,17 +83,23 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         GetPage(
           name: DnDLevelsScreen.ROUTE_NAME,
-          page: () => DnDLevelsScreen(),
+          page: () => DnDLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: HangManLevelsScreen.ROUTE_NAME,
-          page: () => HangManLevelsScreen(),
+          page: () => HangManLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: TriviaLevelsScreen.ROUTE_NAME,
-          page: () => TriviaLevelsScreen(),
+          page: () => TriviaLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
       ],
