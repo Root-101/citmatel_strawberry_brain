@@ -1,10 +1,17 @@
-import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
-import 'package:flutter/material.dart';
-import 'package:animations/animations.dart';
+import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:circular_menu/circular_menu.dart';
+import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
+import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
+import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
-import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animator/flutter_animator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:pushable_button/pushable_button.dart';
 
 class DashBoard extends StatelessWidget {
   DashBoard({Key? key}) : super(key: key);
@@ -12,83 +19,179 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            _buildSettingsButton(),
-            _buildDashboard(context),
-          ],
+      backgroundColor: Colors.black,
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.transparent, //pa si por si acaso
+          image: DecorationImage(
+            image: AssetImage(BrainAssets.CHARACTER_BACKGROUND_MAIN),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: SafeArea(
+          child: Stack(
+            children: [
+              _buildTitle(),
+              _buildSettingsButton(),
+              //  _buildHintText(),
+              _buildMultiMenu(),
+              //     _buildMainOptions(),
+            ],
+          ),
         ),
       ),
     );
   }
 
   _buildSettingsButton() {
+    Size size = Get.size;
     return Positioned(
       left: 10,
       top: 10,
       child: IconButton(
-        icon: Icon(Icons.settings),
         onPressed: Get.find<BrainZoomDrawerController>().toggleDrawer,
+        icon: FaIcon(
+          FontAwesomeIcons.cogs,
+          color: Colors.black87,
+          size: size.width / 13,
+        ),
       ),
     );
   }
 
-  _buildDashboard(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        SizedBox(height: 50), //espacio entre appbar y resto
-        HintTextWidget(),
-        _buildMainOptions(context),
-      ],
+  _buildHintText() {
+    return Positioned(
+      right: 0,
+      top: 40, //MediaQuery.of(Get.context!).size.height / 18,
+      child: HintTextWidget(),
     );
   }
 
-  _buildMainOptions(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      //childAspectRatio es 4/3, por lo tanto va a ser mas ancho que alto,
-      //por lo tanto su alto va a ser su ancho mas chiquito, exactamente 3/4
-      // mas chiquito + 10px pa si x si acaso
-      // height = width * childAspectRatio^-1 + 10
-      // childAspectRatio^-1 = inverso de childAspectRatio
-      height: MediaQuery.of(context).size.width * 3 / 4 + 10,
-      width: double.infinity,
-      child: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 4 / 3,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+  _buildTitle() {
+    Size size = Get.size;
+    return Positioned(
+      left: size.width / 4.5, //TODO: con 0 no funciona
+      right: size.width / 6,
+      top: size.height / 13,
+      child: BounceInDown(
+        child: AutoSizeText(
+          'Áthlos',
+          style: Get.theme.textTheme.headline1,
+          maxLines: 1,
         ),
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          MainMenuItem(
-            color: Colors.orange,
-            icon: Icons.category,
-            name: "Trivia",
-            currentLevel: 1,
-            moduleMainScreen: TriviaLevelsScreen(),
+      ),
+    );
+  }
+
+  _buildMultiMenu() {
+    Size size = Get.size;
+    GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
+    bool openClose = true;
+
+    return Padding(
+      padding: EdgeInsets.only(
+        top: size.height / 2.5,
+      ),
+      child: CircularMenu(
+        // Menu alignment.
+        alignment: Alignment.center,
+        toggleButtonColor: Colors.transparent,
+        toggleButtonIconColor: Colors.transparent,
+        toggleButtonPadding: 0,
+        radius: size.width / 2.5,
+
+        // animation curve in forward
+        curve: Curves.bounceOut,
+        // animation curve in reverse
+        reverseCurve: Curves.fastOutSlowIn,
+
+        startingAngleInRadian: pi * 0.25,
+        endingAngleInRadian: pi * 0.75,
+
+        backgroundWidget: Positioned(
+          top: size.height / 4.2,
+          left: size.width / 5,
+          right: size.width / 5,
+          child: Center(
+            child: PushableButton(
+              child: Text(
+                'Jugar',
+                style: Get.theme.textTheme.subtitle2,
+              ),
+              height: size.height / 13,
+              elevation: 8,
+              hslColor: HSLColor.fromAHSL(1.0, 195, 1.0, 0.43),
+              shadow: BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 2),
+              ),
+              onPressed: () {
+                if (openClose) {
+                  key.currentState!.forwardAnimation();
+                  openClose = false;
+                } else {
+                  key.currentState!.reverseAnimation();
+                  openClose = true;
+                }
+              },
+            ),
           ),
-          MainMenuItem(
-            color: Colors.blueAccent,
-            icon: Icons.ac_unit_outlined,
-            name: "Ahorcadito",
-            currentLevel: 1,
-            moduleMainScreen: HangManLevelsScreen(),
+        ),
+
+        key: key,
+
+        items: [
+          _buildCircularMenuItem(
+            badgeLabel: DnDUIModule.MODULE_NAME,
+            color: DnDUIModule.PRIMARY_COLOR,
+            badgeColor: DnDUIModule.SECONDARY_COLOR,
+            icon: DnDUIModule.ICON,
+            onTap: () => Get.toNamed(DnDLevelsScreen.ROUTE_NAME),
           ),
-          /*Card(
-            child: Text("DnDHangman"),
-          ),*/
-          Card(
-            child: Text("DnD"),
+          _buildCircularMenuItem(
+            badgeLabel: TriviaUIModule.MODULE_NAME,
+            color: TriviaUIModule.PRIMARY_COLOR,
+            badgeColor: TriviaUIModule.SECONDARY_COLOR,
+            icon: TriviaUIModule.ICON,
+            onTap: () => Get.toNamed(TriviaLevelsScreen.ROUTE_NAME),
           ),
-          Card(
-            child: Text("Random"),
+          _buildCircularMenuItem(
+            badgeLabel: HangManUIModule.MODULE_NAME,
+            color: HangManUIModule.PRIMARY_COLOR,
+            badgeColor: HangManUIModule.SECONDARY_COLOR,
+            icon: HangManUIModule.ICON,
+            onTap: () => Get.toNamed(HangManLevelsScreen.ROUTE_NAME),
           ),
         ],
       ),
+    );
+  }
+
+  _buildCircularMenuItem({
+    required String badgeLabel,
+    required Color color,
+    required Color badgeColor,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return CircularMenuItem(
+      margin: 20,
+      iconSize: 40,
+      enableBadge: true,
+      badgeColor: badgeColor,
+      badgeLabel: badgeLabel,
+      badgeRadius: 20,
+      badgeTextColor: Colors.white,
+      badgeTextStyle: Get.textTheme.subtitle2?.copyWith(
+        fontSize: 17,
+      ),
+      badgeLeftOffet: Get.size.width / 6,
+      badgeTopOffet: 0,
+      icon: icon,
+      color: color,
+      onTap: onTap,
     );
   }
 }
