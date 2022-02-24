@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
       builder: (_) => ZoomDrawer(
         controller: _.zoomDrawerController,
         menuScreen: BrainDrawer(),
-        mainScreen: DashBoard(
-            mute: false), //TODO Get the mute value from the data base.
+        mainScreen: DashBoard(),
         borderRadius: 24.0,
         showShadow: true,
         angle: -12.0,

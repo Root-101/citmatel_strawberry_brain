@@ -13,10 +13,8 @@ import 'package:get/get.dart';
 import 'package:pushable_button/pushable_button.dart';
 
 class DashBoard extends StatelessWidget {
-  bool mute;
   DashBoard({
     Key? key,
-    required this.mute,
   }) : super(key: key);
 
   @override
@@ -59,14 +57,6 @@ class DashBoard extends StatelessWidget {
           size: size.width / 13,
         ),
       ),
-    );
-  }
-
-  _buildHintText() {
-    return Positioned(
-      right: 0,
-      top: 40, //MediaQuery.of(Get.context!).size.height / 18,
-      child: HintTextWidget(),
     );
   }
 
@@ -154,7 +144,8 @@ class DashBoard extends StatelessWidget {
             onTap: () => Get.toNamed(
               DnDLevelsScreen.ROUTE_NAME,
               arguments: {
-                'mute': mute,
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
               },
             ),
           ),
@@ -166,7 +157,8 @@ class DashBoard extends StatelessWidget {
             onTap: () => Get.toNamed(
               TriviaLevelsScreen.ROUTE_NAME,
               arguments: {
-                'mute': mute,
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
               },
             ),
           ),
@@ -178,7 +170,8 @@ class DashBoard extends StatelessWidget {
             onTap: () => Get.toNamed(
               HangManLevelsScreen.ROUTE_NAME,
               arguments: {
-                'mute': mute,
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
               },
             ),
           ),
