@@ -16,7 +16,7 @@ class Init {
   static final instance = Init._();
 
   Future initialize() async {
-    BrainUIModule.init();
+    await BrainUIModule.init();
     await AppInfo.instance.initialize();
     //await Future.delayed(const Duration(seconds: 10));
   }

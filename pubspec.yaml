@@ -53,6 +53,10 @@ dependencies:
   citmatel_strawberry_tools:
     path: ../citmatel_strawberry_tools
 
+  #DB
+  clean_repo_objectbox: ^0.2.1-SNAPSHOT.20220223
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
