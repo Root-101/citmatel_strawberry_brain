@@ -39,8 +39,7 @@ class SplashScreen extends StatelessWidget {
           splash: Container(
             color: Colors.blueAccent,
             child: SplashScreenClient1(
-              //TODO Get the mute value from the data base.
-              mute: false,
+              mute: Get.find<BrainMuteController>().isMuted(),
             ),
           ),
           duration: 9,
