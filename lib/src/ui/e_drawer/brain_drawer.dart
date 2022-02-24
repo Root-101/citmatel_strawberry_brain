@@ -1,4 +1,5 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -39,6 +40,27 @@ class BrainDrawer extends StatelessWidget {
                     ),
                     tapHandler: () {
                       controller.changeValue();
+                    },
+                  );
+                },
+              ),
+              GetBuilder<DnDShowPopupController>(
+                builder: (controller) {
+                  return _buildListTile(
+                    title: "Notificaciones",
+                    leading: controller.isShowing()
+                        ? FaIcon(
+                            FontAwesomeIcons.comment,
+                            size: 35,
+                            color: Colors.blue.shade900,
+                          )
+                        : FaIcon(
+                            FontAwesomeIcons.commentSlash,
+                            size: 35,
+                            color: Colors.blue.shade900,
+                          ),
+                    tapHandler: () {
+                      Get.find<DnDShowPopupController>().changeValue();
                     },
                   );
                 },
