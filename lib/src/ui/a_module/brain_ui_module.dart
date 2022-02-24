@@ -13,5 +13,11 @@ class BrainUIModule {
     await DnDUIModule.init();
 
     Get.put<BrainZoomDrawerController>(BrainZoomDrawerControllerImpl());
+
+    Get.put<BrainMuteController>(
+      BrainMuteControllerImpl(
+        muteUseCase: Get.find(),
+      ),
+    );
   }
 }
