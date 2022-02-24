@@ -7,6 +7,6 @@ class BrainCoreModule {
     await KeyValueCoreModule.init();
 
     Get.put<BrainHintUseCase>(BrainHintUseCaseImpl(BrainHints.hints));
-    Get.put<BrainMuteUseCase>(BoolKeyValueUseCaseImpl());
+    Get.put<BrainMuteUseCase>(BrainMuteUseCaseImpl());
   }
 }
