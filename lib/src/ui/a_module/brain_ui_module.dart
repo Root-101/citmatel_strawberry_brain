@@ -5,13 +5,19 @@ import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:get/get.dart';
 
 class BrainUIModule {
-  static void init() {
-    BrainCoreModule.init();
+  static Future init() async {
+    await BrainCoreModule.init();
 
-    TriviaUIModule.init();
-    HangManUIModule.init();
-    DnDUIModule.init();
+    await TriviaUIModule.init();
+    await HangManUIModule.init();
+    await DnDUIModule.init();
 
     Get.put<BrainZoomDrawerController>(BrainZoomDrawerControllerImpl());
+
+    Get.put<BrainMuteController>(
+      BrainMuteControllerImpl(
+        muteUseCase: Get.find(),
+      ),
+    );
   }
 }
