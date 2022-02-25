@@ -39,7 +39,8 @@ class SplashScreen extends StatelessWidget {
           splash: Container(
             color: Colors.blueAccent,
             child: SplashScreenClient1(
-              mute: Get.find<BrainMuteController>().isMuted(),
+              mute:
+                  false, //Get.find<BrainMuteController>().isMuted(),//no se puede, el video se ponde antes que la app carge. mirar para ultima version de splash para resolverlo
             ),
           ),
           duration: 9,
