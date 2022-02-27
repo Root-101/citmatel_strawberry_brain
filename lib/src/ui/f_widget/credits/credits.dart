@@ -105,7 +105,11 @@ class Credits extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Image.asset(credits.appIconURL),
+        Image.asset(
+          credits.appIconURL,
+          width: 80,
+          height: 80,
+        ),
         Column(
           children: [
             Text(
