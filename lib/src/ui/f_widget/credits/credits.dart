@@ -1,6 +1,7 @@
 import 'package:citmatel_strawberry_brain/assets/brain_assets.dart';
 import 'package:citmatel_strawberry_brain/src/ui/brain_ui_exporter.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Credits extends StatelessWidget {
   static final ROUTE_NAME = "/credits";
@@ -11,40 +12,63 @@ class Credits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              _buildAppHeader(),
+              SizedBox(
+                height: 20,
+              ),
+              _buildCredit(credits.clientLogo, credits.clientCredits),
+              SizedBox(
+                height: 30,
+              ),
+              _buildCredit(credits.devLogo, credits.devCredits),
+              SizedBox(
+                height: 30,
+              ),
+              ...credits.others
+                  .map(
+                    (e) => Text(
+                      e,
+                      style: Get.textTheme.bodyText2?.copyWith(
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                  .toList(),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                credits.ISBN,
+                style: Get.textTheme.subtitle2?.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
                 ),
-                _buildAppHeader(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildCredit(credits.clientLogo, credits.clientCredits),
-                SizedBox(
-                  height: 30,
-                ),
-                _buildCredit(credits.devLogo, credits.devCredits),
-                SizedBox(
-                  height: 30,
-                ),
-                ...credits.others.map((e) => Text(e)).toList(),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(credits.ISBN),
-                SizedBox(
-                  height: 20,
-                ),
-                ...credits.copyright.map((e) => Text(e)).toList(),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ...credits.copyright
+                  .map(
+                    (e) => Text(
+                      e,
+                      style: Get.textTheme.bodyText2?.copyWith(
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                  .toList(),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
         ),
       ),
@@ -61,9 +85,15 @@ class Credits extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Text("EQUIPO DE REALIZACIÓN"),
+        Text(
+          "Equipo de realización",
+          style: Get.textTheme.bodyText1?.copyWith(
+            fontSize: 18,
+            color: Colors.black,
+          ),
+        ),
         SizedBox(
-          height: 5,
+          height: 10,
         ),
         ...credits
             .map(
@@ -90,14 +120,20 @@ class Credits extends StatelessWidget {
   _buildCreditHeader(String header) {
     return Text(
       header,
-      style: TextStyle(fontWeight: FontWeight.bold),
+      style: Get.textTheme.bodyText1?.copyWith(
+        fontSize: 16,
+        color: Colors.black,
+      ),
     );
   }
 
   _buildCreditDetail(String people) {
     return Text(
       people,
-      style: TextStyle(fontWeight: FontWeight.normal),
+      style: Get.textTheme.subtitle2?.copyWith(
+        fontSize: 16,
+        color: Colors.black,
+      ),
     );
   }
 
@@ -105,16 +141,26 @@ class Credits extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Image.asset(credits.appIconURL),
+        Image.asset(
+          credits.appIconURL,
+          width: 80,
+          height: 80,
+        ),
         Column(
           children: [
             Text(
               credits.appName,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: Get.textTheme.headline1?.copyWith(
+                fontSize: 40,
+              ),
               textAlign: TextAlign.start,
             ),
             Text(
               credits.versionNumber,
+              style: Get.textTheme.subtitle2?.copyWith(
+                color: Colors.black,
+                fontSize: 18,
+              ),
               textAlign: TextAlign.start,
             ),
           ],
@@ -177,17 +223,17 @@ class CreditDomain {
     ),
     CreditInfo(
       header: "Equipo de desarrollo",
-      peoples: ["Ing. Jessica Aidyl García Albalah"],
+      peoples: [
+        "Ing. Jessica Aidyl García Albalah",
+        "Lic. José Luis Hernández Barrios",
+        "Brian Alejandro Luis Requeiro",
+      ],
     ),
   ];
 
-  final List<String> others = [
-    "Otras colaboraciones",
-    "Imagenes del personaje por:",
-    "upklyak / Freepik",
-  ];
+  final List<String> others = [];
 
-  final String ISBN = "ISBN:123-456-789-000";
+  final String ISBN = "ISBN: 123-456-789-000";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
     "Todos los derechos reservados."
