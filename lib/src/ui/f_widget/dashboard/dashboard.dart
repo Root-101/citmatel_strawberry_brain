@@ -63,13 +63,15 @@ class DashBoard extends StatelessWidget {
   _buildTitle() {
     Size size = Get.size;
     return Positioned(
-      left: size.width / 4.5, //TODO: con 0 no funciona
-      right: size.width / 6,
       top: size.height / 13,
+      left: size.width / 4 + 5,
+      right: size.width / 4,
       child: BounceInDown(
         child: AutoSizeText(
           'Áthlos',
-          style: Get.theme.textTheme.headline1,
+          style: Get.theme.textTheme.headline1?.copyWith(
+            fontSize: size.height / 8,
+          ),
           maxLines: 1,
         ),
       ),
@@ -83,7 +85,7 @@ class DashBoard extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(
-        top: size.height / 2.5,
+        top: size.height / 3.5,
       ),
       child: CircularMenu(
         // Menu alignment.
@@ -102,14 +104,16 @@ class DashBoard extends StatelessWidget {
         endingAngleInRadian: pi * 0.75,
 
         backgroundWidget: Positioned(
-          top: size.height / 4.2,
+          top: size.height / 3.3,
           left: size.width / 5,
           right: size.width / 5,
           child: Center(
             child: PushableButton(
               child: Text(
                 'Jugar',
-                style: Get.theme.textTheme.subtitle2,
+                style: Get.theme.textTheme.subtitle2?.copyWith(
+                  fontSize: size.width / 14,
+                ),
               ),
               height: size.height / 13,
               elevation: 8,
@@ -137,6 +141,7 @@ class DashBoard extends StatelessWidget {
 
         items: [
           _buildCircularMenuItem(
+            size: size,
             badgeLabel: DnDUIModule.MODULE_NAME,
             color: DnDUIModule.PRIMARY_COLOR,
             badgeColor: DnDUIModule.SECONDARY_COLOR,
@@ -150,6 +155,7 @@ class DashBoard extends StatelessWidget {
             ),
           ),
           _buildCircularMenuItem(
+            size: size,
             badgeLabel: TriviaUIModule.MODULE_NAME,
             color: TriviaUIModule.PRIMARY_COLOR,
             badgeColor: TriviaUIModule.SECONDARY_COLOR,
@@ -163,6 +169,7 @@ class DashBoard extends StatelessWidget {
             ),
           ),
           _buildCircularMenuItem(
+            size: size,
             badgeLabel: HangManUIModule.MODULE_NAME,
             color: HangManUIModule.PRIMARY_COLOR,
             badgeColor: HangManUIModule.SECONDARY_COLOR,
@@ -186,19 +193,20 @@ class DashBoard extends StatelessWidget {
     required Color badgeColor,
     required IconData icon,
     required VoidCallback onTap,
+    required Size size,
   }) {
     return CircularMenuItem(
-      margin: 20,
-      iconSize: 40,
+      margin: size.width / 19,
+      iconSize: size.width / 11,
       enableBadge: true,
       badgeColor: badgeColor,
       badgeLabel: badgeLabel,
       badgeRadius: 20,
       badgeTextColor: Colors.white,
       badgeTextStyle: Get.textTheme.subtitle2?.copyWith(
-        fontSize: 17,
+        fontSize: size.width / 22,
       ),
-      badgeLeftOffet: Get.size.width / 6,
+      badgeLeftOffet: size.width / 6,
       badgeTopOffet: 0,
       icon: icon,
       color: color,
