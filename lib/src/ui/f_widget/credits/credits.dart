@@ -25,91 +25,102 @@ class Credits extends StatelessWidget {
               ],
             ),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                _buildAppHeader(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildEquipoDeRelizacion(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildCredit(credits.clientCredits1),
-                SizedBox(
-                  height: 10,
-                ),
-                //------------------- DEV -------------------
-                _buildCreditHeader(credits.devCredits1.header),
-                SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Image.asset(
-                        credits.devLogo,
-                        width: 150,
-                        height: 50,
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildAppHeader(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildEquipoDeRelizacion(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildCredit(credits.clientCredits1),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    //------------------- DEV -------------------
+                    _buildCreditHeader(credits.devCredits1.header),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Image.asset(
+                            credits.devLogo,
+                            width: 150,
+                            height: 50,
+                          ),
+                        ),
+                      ],
+                    ),
+                    ...credits.devCredits1.peoples
+                        .map((people) => _buildCreditDetail(people))
+                        .toList(),
+                    //------------------- /DEV -------------------
+                    SizedBox(
+                      height: 10,
+                    ),
+                    _buildCredit(credits.clientCredits2),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ...credits.others
+                        .map(
+                          (e) => Text(
+                            e,
+                            style: Get.textTheme.bodyText2?.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    Text(
+                      credits.ISBN,
+                      style: Get.textTheme.subtitle2?.copyWith(
+                        color: Colors.black,
+                        fontSize: 20,
                       ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ...credits.copyright
+                        .map(
+                          (e) => Text(
+                            e,
+                            style: Get.textTheme.bodyText2?.copyWith(
+                              color: Colors.black,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    SizedBox(
+                      height: 20,
                     ),
                   ],
                 ),
-                ...credits.devCredits1.peoples
-                    .map((people) => _buildCreditDetail(people))
-                    .toList(),
-                //------------------- /DEV -------------------
-                SizedBox(
-                  height: 10,
+              ),
+              Positioned(
+                left: 10,
+                top: 10,
+                child: BackButton(
+                  color: Colors.black,
                 ),
-                _buildCredit(credits.clientCredits2),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                ...credits.others
-                    .map(
-                      (e) => Text(
-                        e,
-                        style: Get.textTheme.bodyText2?.copyWith(
-                          color: Colors.black,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                Text(
-                  credits.ISBN,
-                  style: Get.textTheme.subtitle2?.copyWith(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ...credits.copyright
-                    .map(
-                      (e) => Text(
-                        e,
-                        style: Get.textTheme.bodyText2?.copyWith(
-                          color: Colors.black,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

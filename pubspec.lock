@@ -114,28 +114,28 @@ packages:
       path: "../citmatel_strawberry_dnd"
       relative: true
     source: path
-    version: "1.0.0-SNAPSHOT.20220222"
+    version: "1.1.0-RELEASE.20220301"
   citmatel_strawberry_hangman:
     dependency: "direct main"
     description:
       path: "../citmatel_strawberry_hangman"
       relative: true
     source: path
-    version: "1.0.0-SNAPSHOT.20220222"
+    version: "1.1.0-RELEASE.20220301"
   citmatel_strawberry_tools:
     dependency: "direct main"
     description:
       path: "../citmatel_strawberry_tools"
       relative: true
     source: path
-    version: "1.0.0-SNAPSHOT.20220222"
+    version: "1.1.0-RELEASE.20220301"
   citmatel_strawberry_trivia:
     dependency: "direct main"
     description:
       path: "../citmatel_strawberry_trivia"
       relative: true
     source: path
-    version: "1.0.0-SNAPSHOT.20220222"
+    version: "1.1.0-RELEASE.20220301"
   clean_core:
     dependency: "direct main"
     description:
