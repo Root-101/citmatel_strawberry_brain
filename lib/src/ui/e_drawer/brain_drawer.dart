@@ -1,12 +1,20 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class BrainDrawer extends StatelessWidget {
+  BrainDrawer({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double iconsSize = size.width / 13;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -21,41 +29,85 @@ class BrainDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              GetBuilder<BrainMuteController>(
+                builder: (controller) {
+                  return _buildListTile(
+                    size: size,
+                    title: "Sonido.",
+                    leading: Icon(
+                      controller.isMuted()
+                          ? Icons.volume_off_rounded
+                          : Icons.volume_up_rounded,
+                      size: iconsSize,
+                      color: Colors.blue.shade900,
+                    ),
+                    tapHandler: () {
+                      controller.changeValue();
+                    },
+                  );
+                },
+              ),
+              GetBuilder<DnDShowPopupController>(
+                builder: (controller) {
+                  return _buildListTile(
+                    size: size,
+                    title: "Notificaciones.",
+                    leading: controller.isShowing()
+                        ? FaIcon(
+                            FontAwesomeIcons.solidComment,
+                            size: iconsSize,
+                            color: Colors.blue.shade900,
+                          )
+                        : FaIcon(
+                            FontAwesomeIcons.commentSlash,
+                            size: iconsSize,
+                            color: Colors.blue.shade900,
+                          ),
+                    tapHandler: () {
+                      Get.find<DnDShowPopupController>().changeValue();
+                    },
+                  );
+                },
+              ),
               _buildListTile(
+                size: size,
                 title: "Twitter.",
                 leading: Icon(
                   FontAwesomeIcons.twitter,
-                  size: 30,
+                  size: iconsSize,
                   color: Color.fromRGBO(29, 161, 242, 1),
                 ),
                 tapHandler: () =>
                     _openURL("https://www.twitter.com/@libreriavcuba"),
               ),
               _buildListTile(
+                size: size,
                 title: "Facebook.",
                 leading: Icon(
                   FontAwesomeIcons.facebookF,
-                  size: 30,
+                  size: iconsSize,
                   color: Color.fromRGBO(66, 103, 178, 1),
                 ),
                 tapHandler: () =>
                     _openURL("https://www.facebook.com/LibreriaVirtual"),
               ),
               _buildListTile(
+                size: size,
                 title: "Librería Virtual.",
                 leading: Image.asset(
                   BrainAssets.APP_LIBRERIA,
-                  width: 30,
-                  height: 30,
+                  width: size.width / 11,
+                  height: size.width / 11,
                 ),
                 tapHandler: () =>
                     _openURL("https://www.superfacil.cu/libreria"),
               ),
               _buildListTile(
+                size: size,
                 title: "Sobre nosotros...",
                 leading: Icon(
                   FontAwesomeIcons.infoCircle,
-                  size: 30,
+                  size: iconsSize,
                 ),
                 tapHandler: () {
                   Get.toNamed(Credits.ROUTE_NAME);
@@ -79,15 +131,33 @@ class BrainDrawer extends StatelessWidget {
     required String title,
     required Widget leading,
     required Function tapHandler,
+    required Size size,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: EdgeInsets.symmetric(
+        vertical: size.height / 75,
+        horizontal: 2.0,
+      ),
       child: ListTile(
         leading: leading,
-        minLeadingWidth: 15,
+        minLeadingWidth: size.width / 25,
         title: Text(
           title,
-          style: TextStyle(fontSize: 16, color: Colors.white),
+          style: Get.textTheme.subtitle2?.copyWith(
+            fontSize: size.width / 20,
+            shadows: [
+              Shadow(
+                color: Colors.blue.shade900,
+                blurRadius: 10.0,
+                offset: Offset(3.0, 3.0),
+              ),
+              Shadow(
+                color: Colors.black,
+                blurRadius: 10.0,
+                offset: Offset(-3.0, 3.0),
+              ),
+            ],
+          ),
         ),
         onTap: () => tapHandler(),
       ),

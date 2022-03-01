@@ -3,7 +3,7 @@ description: Brain for CITMATEL's 'strawberry' project
 
 publish_to: "none"
 
-version: 1.0.0-SNAPSHOT.20220222
+version: 1.0.0-RELEASE.20220301
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -53,6 +53,10 @@ dependencies:
   citmatel_strawberry_tools:
     path: ../citmatel_strawberry_tools
 
+  #DB
+  clean_repo_objectbox: ^0.2.1-SNAPSHOT.20220223
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -91,6 +95,8 @@ flutter:
         - asset: assets/fonts/RobotoSlab-Variable.ttf
           weight: 400
   assets:
+    - assets/app_icon.png
+
     - packages/citmatel_strawberry_brain/assets/character/background_dashboard.jpg
     - packages/citmatel_strawberry_brain/assets/character/background_main.png
 

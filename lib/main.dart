@@ -16,7 +16,7 @@ class Init {
   static final instance = Init._();
 
   Future initialize() async {
-    BrainUIModule.init();
+    await BrainUIModule.init();
     await AppInfo.instance.initialize();
     //await Future.delayed(const Duration(seconds: 10));
   }
@@ -38,7 +38,10 @@ class SplashScreen extends StatelessWidget {
         SingleSplashModel(
           splash: Container(
             color: Colors.blueAccent,
-            child: SplashScreenClient1(),
+            child: SplashScreenClient1(
+              mute:
+                  false, //Get.find<BrainMuteController>().isMuted(),//no se puede, el video se ponde antes que la app carge. mirar para ultima version de splash para resolverlo
+            ),
           ),
           duration: 9,
         ),
@@ -64,7 +67,7 @@ class BrainMaterialApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Áthlos',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       //--------------------- <THEAMING> -----------------------------------
       theme: _buildTheme(),
       //--------------------- </THEAMING> -----------------------------------
@@ -83,17 +86,23 @@ class BrainMaterialApp extends StatelessWidget {
         ),
         GetPage(
           name: DnDLevelsScreen.ROUTE_NAME,
-          page: () => DnDLevelsScreen(),
+          page: () => DnDLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: HangManLevelsScreen.ROUTE_NAME,
-          page: () => HangManLevelsScreen(),
+          page: () => HangManLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
         GetPage(
           name: TriviaLevelsScreen.ROUTE_NAME,
-          page: () => TriviaLevelsScreen(),
+          page: () => TriviaLevelsScreen(
+            mute: Get.arguments['mute'],
+          ),
           transition: Transition.downToUp,
         ),
       ],
