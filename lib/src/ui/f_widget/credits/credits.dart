@@ -14,106 +14,138 @@ class Credits extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              _buildAppHeader(),
-              SizedBox(
-                height: 20,
-              ),
-              _buildCredit(credits.clientLogo, credits.clientCredits),
-              SizedBox(
-                height: 30,
-              ),
-              _buildCredit(credits.devLogo, credits.devCredits),
-              SizedBox(
-                height: 30,
-              ),
-              ...credits.others
-                  .map(
-                    (e) => Text(
-                      e,
-                      style: Get.textTheme.bodyText2?.copyWith(
-                        color: Colors.black,
-                      ),
-                    ),
-                  )
-                  .toList(),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                credits.ISBN,
-                style: Get.textTheme.subtitle2?.copyWith(
-                  color: Colors.black,
-                  fontSize: 20,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFFFFEBEE),
+                Color(0xFF90CAF9),
+              ],
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ...credits.copyright
-                  .map(
-                    (e) => Text(
-                      e,
-                      style: Get.textTheme.bodyText2?.copyWith(
-                        color: Colors.black,
+                _buildAppHeader(),
+                SizedBox(
+                  height: 20,
+                ),
+                _buildEquipoDeRelizacion(),
+                SizedBox(
+                  height: 20,
+                ),
+                _buildCredit(credits.clientCredits1),
+                SizedBox(
+                  height: 10,
+                ),
+                //------------------- DEV -------------------
+                _buildCreditHeader(credits.devCredits1.header),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Image.asset(
+                        credits.devLogo,
+                        width: 150,
+                        height: 50,
                       ),
                     ),
-                  )
-                  .toList(),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+                  ],
+                ),
+                ...credits.devCredits1.peoples
+                    .map((people) => _buildCreditDetail(people))
+                    .toList(),
+                //------------------- /DEV -------------------
+                SizedBox(
+                  height: 10,
+                ),
+                _buildCredit(credits.clientCredits2),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                ...credits.others
+                    .map(
+                      (e) => Text(
+                        e,
+                        style: Get.textTheme.bodyText2?.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                    .toList(),
+                Text(
+                  credits.ISBN,
+                  style: Get.textTheme.subtitle2?.copyWith(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                ...credits.copyright
+                    .map(
+                      (e) => Text(
+                        e,
+                        style: Get.textTheme.bodyText2?.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
+                    .toList(),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  _buildCredit(String logoURL, List<CreditInfo> credits) {
+  _buildEquipoDeRelizacion() {
+    return Text(
+      "Equipo de realización",
+      style: Get.textTheme.bodyText1?.copyWith(
+        fontSize: 20,
+        color: Colors.black,
+      ),
+    );
+  }
+
+  _buildCredit(List<CreditInfo> credits) {
     return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
-          child: Image.asset(logoURL),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "Equipo de realización",
-          style: Get.textTheme.bodyText1?.copyWith(
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        ...credits
-            .map(
-              (credit) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Column(
-                  children: [
-                    _buildCreditHeader(credit.header),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    ...credit.peoples
-                        .map((people) => _buildCreditDetail(people))
-                        .toList(),
-                  ],
-                ),
+      children: credits
+          .map(
+            (credit) => Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: [
+                  _buildCreditHeader(credit.header),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  ...credit.peoples
+                      .map((people) => _buildCreditDetail(people))
+                      .toList(),
+                ],
               ),
-            )
-            .toList()
-      ],
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -121,7 +153,7 @@ class Credits extends StatelessWidget {
     return Text(
       header,
       style: Get.textTheme.bodyText1?.copyWith(
-        fontSize: 16,
+        fontSize: 18,
         color: Colors.black,
       ),
     );
@@ -131,7 +163,7 @@ class Credits extends StatelessWidget {
     return Text(
       people,
       style: Get.textTheme.subtitle2?.copyWith(
-        fontSize: 16,
+        fontSize: 18,
         color: Colors.black,
       ),
     );
@@ -140,18 +172,19 @@ class Credits extends StatelessWidget {
   _buildAppHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(
+        /*Image.asset(
           credits.appIconURL,
           width: 80,
           height: 80,
-        ),
+        ),*/
         Column(
           children: [
             Text(
               credits.appName,
               style: Get.textTheme.headline1?.copyWith(
-                fontSize: 40,
+                fontSize: 55,
               ),
               textAlign: TextAlign.start,
             ),
@@ -176,64 +209,46 @@ class CreditDomain {
   String appIconURL = AppInfo.instance.appIconURL; //"assets/app_icon.png";
 
   final String clientLogo = BrainAssets.APP_CLIENT_LOGO;
-  final List<CreditInfo> clientCredits = [
+  final String devLogo = BrainAssets.APP_DEV_LOGO_FLAT;
+
+  final List<CreditInfo> clientCredits1 = [
     CreditInfo(
       header: "Líder de proyecto",
       peoples: ["Mayling Mirabal Olivera"],
     ),
     CreditInfo(
       header: "Idea original",
-      peoples: [],
+      peoples: ["Manuel A. Iturralde Vinent"],
     ),
-    CreditInfo(
-      header: "Ilustraciones",
-      peoples: [],
-    ),
-    CreditInfo(
-      header: "Animación",
-      peoples: [],
-    ),
-    CreditInfo(
-      header: "Diseño",
-      peoples: [],
-    ),
-    CreditInfo(
-      header: "Sonido",
-      peoples: [],
-    ),
+  ];
+
+  final List<CreditInfo> clientCredits2 = [
     CreditInfo(
       header: "Control de la calidad",
-      peoples: [],
+      peoples: ["Hissel Lamanier Regueiferos"],
     ),
     CreditInfo(
       header: "Gestión de la calidad",
       peoples: [
         "Mercedes M. Sosa Hernández",
-        "Anays Gómez García",
         "Ivett Muñoz Ramírez",
       ],
     ),
   ];
 
-  final String devLogo = BrainAssets.APP_DEV_LOGO_FLAT;
-  final List<CreditInfo> devCredits = [
-    CreditInfo(
-      header: "Líder de proyecto",
-      peoples: ["Jesús Hernández Barrios"],
-    ),
-    CreditInfo(
-      header: "Equipo de desarrollo",
-      peoples: [
-        "Ing. Jessica Aidyl García Albalah",
-        "Lic. José Luis Hernández Barrios",
-        "Brian Alejandro Luis Requeiro",
-      ],
-    ),
-  ];
-
+  final CreditInfo devCredits1 = CreditInfo(
+    header: "Diseño y Programación",
+    peoples: [
+      "Jesús Hernández Barrios",
+      "Ing. Jessica Aidyl García Albalah",
+      "Lic. José Luis Hernández Barrios",
+      "Brian Alejandro Luis Requeiro",
+      "Contáctenos: +53 5 426 8660",
+    ],
+  );
   final List<String> others = [];
 
-  final String ISBN = "ISBN: 123-456-789-000";
+  final String ISBN = "ISBN: 978-959-315-XXX-X";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
     "Todos los derechos reservados."
