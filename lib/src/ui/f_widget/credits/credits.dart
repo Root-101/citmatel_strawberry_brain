@@ -11,8 +11,9 @@ class Credits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size deviceSize = MediaQuery.of(context).size;
+    double textSize = deviceSize.width / 21;
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -33,20 +34,20 @@ class Credits extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    _buildAppHeader(),
+                    _buildAppHeader(deviceSize),
                     SizedBox(
                       height: 20,
                     ),
-                    _buildEquipoDeRelizacion(),
+                    _buildEquipoDeRelizacion(deviceSize),
                     SizedBox(
                       height: 20,
                     ),
-                    _buildCredit(credits.clientCredits1),
+                    _buildCredit(credits.clientCredits1, textSize),
                     SizedBox(
                       height: 10,
                     ),
                     //------------------- DEV -------------------
-                    _buildCreditHeader(credits.devCredits1.header),
+                    _buildCreditHeader(credits.devCredits1.header, textSize),
                     SizedBox(
                       height: 5,
                     ),
@@ -57,20 +58,22 @@ class Credits extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Image.asset(
                             credits.devLogo,
-                            width: 150,
-                            height: 50,
+                            width: deviceSize.width / 2,
+                            height: deviceSize.height / 9,
                           ),
                         ),
                       ],
                     ),
                     ...credits.devCredits1.peoples
-                        .map((people) => _buildCreditDetail(people))
+                        .map(
+                          (people) => _buildCreditDetail(people, textSize),
+                        )
                         .toList(),
                     //------------------- /DEV -------------------
                     SizedBox(
                       height: 10,
                     ),
-                    _buildCredit(credits.clientCredits2),
+                    _buildCredit(credits.clientCredits2, textSize),
                     SizedBox(
                       height: 10,
                     ),
@@ -91,7 +94,7 @@ class Credits extends StatelessWidget {
                       credits.ISBN,
                       style: Get.textTheme.subtitle2?.copyWith(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: textSize,
                       ),
                     ),
                     SizedBox(
@@ -103,6 +106,7 @@ class Credits extends StatelessWidget {
                             e,
                             style: Get.textTheme.bodyText2?.copyWith(
                               color: Colors.black,
+                              fontSize: deviceSize.width / 25,
                             ),
                           ),
                         )
@@ -116,8 +120,13 @@ class Credits extends StatelessWidget {
               Positioned(
                 left: 10,
                 top: 10,
-                child: BackButton(
+                child: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                  ),
                   color: Colors.black,
+                  onPressed: () => Get.back(),
+                  iconSize: deviceSize.width / 19,
                 ),
               ),
             ],
@@ -127,17 +136,17 @@ class Credits extends StatelessWidget {
     );
   }
 
-  _buildEquipoDeRelizacion() {
+  _buildEquipoDeRelizacion(Size deviceSize) {
     return Text(
       "Equipo de realización",
       style: Get.textTheme.bodyText1?.copyWith(
-        fontSize: 20,
+        fontSize: deviceSize.width / 15,
         color: Colors.black,
       ),
     );
   }
 
-  _buildCredit(List<CreditInfo> credits) {
+  _buildCredit(List<CreditInfo> credits, double textSize) {
     return Column(
       children: credits
           .map(
@@ -145,12 +154,14 @@ class Credits extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10),
               child: Column(
                 children: [
-                  _buildCreditHeader(credit.header),
+                  _buildCreditHeader(credit.header, textSize),
                   SizedBox(
                     height: 5,
                   ),
                   ...credit.peoples
-                      .map((people) => _buildCreditDetail(people))
+                      .map(
+                        (people) => _buildCreditDetail(people, textSize),
+                      )
                       .toList(),
                 ],
               ),
@@ -160,27 +171,27 @@ class Credits extends StatelessWidget {
     );
   }
 
-  _buildCreditHeader(String header) {
+  _buildCreditHeader(String header, double textSize) {
     return Text(
       header,
-      style: Get.textTheme.bodyText1?.copyWith(
-        fontSize: 18,
+      style: Get.textTheme.subtitle2?.copyWith(
+        fontSize: textSize,
         color: Colors.black,
       ),
     );
   }
 
-  _buildCreditDetail(String people) {
+  _buildCreditDetail(String people, double textSize) {
     return Text(
       people,
-      style: Get.textTheme.subtitle2?.copyWith(
-        fontSize: 18,
+      style: Get.textTheme.bodyText1?.copyWith(
+        fontSize: textSize,
         color: Colors.black,
       ),
     );
   }
 
-  _buildAppHeader() {
+  _buildAppHeader(Size deviceSize) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -195,7 +206,7 @@ class Credits extends StatelessWidget {
             Text(
               credits.appName,
               style: Get.textTheme.headline1?.copyWith(
-                fontSize: 55,
+                fontSize: deviceSize.width / 7,
               ),
               textAlign: TextAlign.start,
             ),
@@ -203,7 +214,7 @@ class Credits extends StatelessWidget {
               credits.versionNumber,
               style: Get.textTheme.subtitle2?.copyWith(
                 color: Colors.black,
-                fontSize: 18,
+                fontSize: deviceSize.width / 21,
               ),
               textAlign: TextAlign.start,
             ),
@@ -251,8 +262,8 @@ class CreditDomain {
     header: "Diseño y Programación",
     peoples: [
       "Jesús Hernández Barrios",
-      "Ing. Jessica Aidyl García Albalah",
-      "Lic. José Luis Hernández Barrios",
+      "Jessica Aidyl García Albalah",
+      "José Luis Hernández Barrios",
       "Brian Alejandro Luis Requeiro",
       "Contáctenos: +53 5 426 8660",
     ],
