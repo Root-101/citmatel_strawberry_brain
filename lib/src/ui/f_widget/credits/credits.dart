@@ -265,7 +265,7 @@ class CreditDomain {
   );
   final List<String> others = [];
 
-  final String ISBN = "ISBN: 978-959-315-XXX-X";
+  final String ISBN = "ISBN: 978-959-315-255-6";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
     "Todos los derechos reservados."
