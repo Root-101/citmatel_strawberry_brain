@@ -140,7 +140,7 @@ class Credits extends StatelessWidget {
     return Text(
       "Equipo de realización",
       style: Get.textTheme.bodyText1?.copyWith(
-        fontSize: deviceSize.width / 15,
+        fontSize: deviceSize.width / 18,
         color: Colors.black,
       ),
     );
@@ -196,17 +196,12 @@ class Credits extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        /*Image.asset(
-          credits.appIconURL,
-          width: 80,
-          height: 80,
-        ),*/
         Column(
           children: [
             Text(
               credits.appName,
               style: Get.textTheme.headline1?.copyWith(
-                fontSize: deviceSize.width / 7,
+                fontSize: deviceSize.width / 10,
               ),
               textAlign: TextAlign.start,
             ),
@@ -214,7 +209,7 @@ class Credits extends StatelessWidget {
               credits.versionNumber,
               style: Get.textTheme.subtitle2?.copyWith(
                 color: Colors.black,
-                fontSize: deviceSize.width / 21,
+                fontSize: deviceSize.width / 24,
               ),
               textAlign: TextAlign.start,
             ),
@@ -270,7 +265,7 @@ class CreditDomain {
   );
   final List<String> others = [];
 
-  final String ISBN = "ISBN: 978-959-315-XXX-X";
+  final String ISBN = "ISBN: 978-959-315-255-6";
   final List<String> copyright = [
     "© Copyright CITMATEL®, 2022",
     "Todos los derechos reservados."
