@@ -14,22 +14,22 @@ dependencies:
     sdk: flutter
 
   # Architecture & Management
-  get: ^4.5.1
+  get: ^4.6.1
   clean_core: ^1.2.3-RELEASE.20220206
 
   # Visual & Animations
   animations: ^2.0.2
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.4
   flutter_zoom_drawer: ^2.1.1
-  flutter_svg: ^1.0.0
-  flutter_animator: ^3.2.0
+  flutter_svg: ^1.0.3
+  flutter_animator: ^3.2.1
   page_view_indicators: ^2.0.0
   video_player: ^2.2.10
   circular_menu:
     git:
       url: https://github.com/Aidyl98/circular_menu
       ref: develop
-  font_awesome_flutter: ^9.2.0
+  font_awesome_flutter: ^10.1.0
   pushable_button: ^0.0.3
 
   # Utils
