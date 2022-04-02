@@ -1,7 +1,5 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
-import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
-import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -91,20 +89,20 @@ class BrainMaterialApp extends StatelessWidget {
           ),
           transition: Transition.downToUp,
         ),
-        GetPage(
-          name: HangManLevelsScreen.ROUTE_NAME,
-          page: () => HangManLevelsScreen(
-            mute: Get.arguments['mute'],
-          ),
-          transition: Transition.downToUp,
-        ),
-        GetPage(
-          name: TriviaLevelsScreen.ROUTE_NAME,
-          page: () => TriviaLevelsScreen(
-            mute: Get.arguments['mute'],
-          ),
-          transition: Transition.downToUp,
-        ),
+        // GetPage(
+        //   name: HangManLevelsScreen.ROUTE_NAME,
+        //   page: () => HangManLevelsScreen(
+        //     mute: Get.arguments['mute'],
+        //   ),
+        //   transition: Transition.downToUp,
+        // ),
+        // GetPage(
+        //   name: TriviaLevelsScreen.ROUTE_NAME,
+        //   page: () => TriviaLevelsScreen(
+        //     mute: Get.arguments['mute'],
+        //   ),
+        //   transition: Transition.downToUp,
+        // ),
       ],
       unknownRoute: GetPage(
           name: UnknownRouteScreen.ROUTE_NAME,

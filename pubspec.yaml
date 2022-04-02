@@ -39,13 +39,7 @@ dependencies:
   url_launcher: ^6.0.18
   auto_size_text: ^3.0.0
 
-  #Other Modules
-  citmatel_strawberry_trivia:
-    path: ../citmatel_strawberry_trivia
-
-  citmatel_strawberry_hangman:
-    path: ../citmatel_strawberry_hangman
-
+  #Other Modules 
   citmatel_strawberry_dnd:
     path: ../citmatel_strawberry_dnd
 
