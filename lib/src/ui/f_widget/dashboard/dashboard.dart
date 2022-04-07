@@ -94,13 +94,11 @@ class DashBoard extends StatelessWidget {
 
     return Positioned(
       top: size.height / 3.3,
-      left: size.width / 5,
-      right: size.width / 5,
+      left: size.width / 7,
+      right: size.width / 7,
       child: Padding(
         padding: EdgeInsets.only(
-          left: size.width / 9,
-          right: size.width / 9,
-          top: size.height / 2.3,
+          top: size.height / 2.7,
         ),
         child: Center(
           child: PushableButton(
