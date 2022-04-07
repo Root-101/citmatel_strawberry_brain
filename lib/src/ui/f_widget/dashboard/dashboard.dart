@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
@@ -34,6 +32,21 @@ class DashBoard extends StatelessWidget {
               _buildSettingsButton(),
               //  _buildHintText(),
               _buildMultiMenu(),
+              /*Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed(
+                          DnDLevelsScreen.ROUTE_NAME,
+                          arguments: {
+                            //hacerlo en runtime para que cada vez que entre actualize
+                            'mute': Get.find<BrainMuteController>().isMuted(),
+                          },
+                        );
+                      },
+                      child: Text("Go diego GO")))*/
               //     _buildMainOptions(),
             ],
           ),
@@ -78,19 +91,17 @@ class DashBoard extends StatelessWidget {
 
   _buildMultiMenu() {
     Size size = Get.size;
-    GlobalKey<CircularMenuState> key = GlobalKey<CircularMenuState>();
-    bool openClose = true;
 
-    return Padding(
-      padding: EdgeInsets.only(
-        left: size.width / 9,
-        right: size.width / 9,
-        top: size.height / 2.3,
-      ),
-      child: Positioned(
-        top: size.height / 3.3,
-        left: size.width / 5,
-        right: size.width / 5,
+    return Positioned(
+      top: size.height / 3.3,
+      left: size.width / 5,
+      right: size.width / 5,
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: size.width / 9,
+          right: size.width / 9,
+          top: size.height / 2.3,
+        ),
         child: Center(
           child: PushableButton(
             child: Text(
