@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.root101.citmatel_strawberry.brain.citmatel_strawberry_brain"
+        applicationId "com.root101.citmatel_strawberry.brain.citmatel_strawberry_brain.only_dnd"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
