@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
@@ -29,6 +31,7 @@ class DashBoard extends StatelessWidget {
           child: Stack(
             children: [
               _buildTitle(),
+              _buildSubTitle(),
               _buildSettingsButton(),
               //  _buildHintText(),
               _buildMultiMenu(),
@@ -74,7 +77,7 @@ class DashBoard extends StatelessWidget {
   _buildTitle() {
     Size size = Get.size;
     return Positioned(
-      top: size.height / 13,
+      top: size.height / 16,
       left: size.width / 4 + 5,
       right: size.width / 4,
       child: BounceInDown(
@@ -82,6 +85,24 @@ class DashBoard extends StatelessWidget {
           'Áthlos',
           style: Get.theme.textTheme.headline1?.copyWith(
             fontSize: size.height / 8,
+          ),
+          maxLines: 1,
+        ),
+      ),
+    );
+  }
+
+  _buildSubTitle() {
+    Size size = Get.size;
+    return Positioned(
+      top: size.height / 6,
+      left: size.width / 1.5,
+      // right: size.width / 4,
+      child: BounceInDown(
+        child: AutoSizeText(
+          'Puzzle',
+          style: Get.theme.textTheme.headline1?.copyWith(
+            fontSize: size.height / 21,
           ),
           maxLines: 1,
         ),
