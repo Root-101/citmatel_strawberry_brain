@@ -233,10 +233,10 @@ class CreditDomain {
       header: "Líder de proyecto",
       peoples: ["Mayling Mirabal Olivera"],
     ),
-    CreditInfo(
-      header: "Idea original",
-      peoples: ["Manuel A. Iturralde Vinent"],
-    ),
+    // CreditInfo(
+    //   header: "Idea original",
+    //   peoples: ["Manuel A. Iturralde Vinent"],
+    // ),
   ];
 
   final List<CreditInfo> clientCredits2 = [
