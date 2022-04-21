@@ -69,7 +69,7 @@ flutter_icons:
 
 #configuration of flutter_app_name, if something change, run: `flutter pub run flutter_app_name`
 flutter_app_name:
-  name: "Áthlos"
+  name: "Áthlos Puzzle"
 
 flutter:
   uses-material-design: true

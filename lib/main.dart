@@ -64,7 +64,7 @@ class BrainMaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Áthlos',
+      title: 'Áthlos Puzzle',
       debugShowCheckedModeBanner: true,
       //--------------------- <THEAMING> -----------------------------------
       theme: _buildTheme(),
