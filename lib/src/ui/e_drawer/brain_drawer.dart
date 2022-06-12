@@ -47,6 +47,24 @@ class BrainDrawer extends StatelessWidget {
                   );
                 },
               ),
+              GetBuilder<BrainVibrationController>(
+                builder: (controller) {
+                  return _buildListTile(
+                    size: size,
+                    title: "Vibraciones.",
+                    leading: Icon(
+                      controller.isVibration()
+                          ? Icons.vibration_rounded
+                          : Icons.close,
+                      size: iconsSize,
+                      color: Colors.blue.shade900,
+                    ),
+                    tapHandler: () {
+                      controller.changeValue();
+                    },
+                  );
+                },
+              ),
               GetBuilder<DnDShowPopupController>(
                 builder: (controller) {
                   return _buildListTile(

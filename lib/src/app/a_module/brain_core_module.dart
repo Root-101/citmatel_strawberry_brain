@@ -8,5 +8,6 @@ class BrainCoreModule {
 
     Get.put<BrainHintUseCase>(BrainHintUseCaseImpl(BrainHints.hints));
     Get.put<BrainMuteUseCase>(BrainMuteUseCaseImpl());
+    Get.put<BrainVibrationUseCase>(BrainVibrationUseCaseImpl());
   }
 }

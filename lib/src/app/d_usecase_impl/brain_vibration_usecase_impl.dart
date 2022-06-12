@@ -1,17 +1,17 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:clean_repo_objectbox/clean_objectbox_exporter.dart';
 
-class BrainMuteUseCaseImpl extends SingleKeyValueUseCaseImpl<String, bool>
-    implements BrainMuteUseCase {
-  static const String KEY = "MUTE_KEY";
-  static const bool DEFAULT_VALUE = false;
+class BrainVibrationUseCaseImpl extends SingleKeyValueUseCaseImpl<String, bool>
+    implements BrainVibrationUseCase {
+  static const String KEY = "VIBRATION_KEY";
+  static const bool DEFAULT_VALUE = true;
 
-  BrainMuteUseCaseImpl()
+  BrainVibrationUseCaseImpl()
       : super(
           key: KEY,
           defaultValue: DEFAULT_VALUE,
           repo: KeyValueRepoModule.buildKeyValueRepo(
-            converter: MuteKeyValueConverter.converter,
+            converter: VibrationKeyValueConverter.converter,
             key: KEY,
           ),
         );
@@ -22,10 +22,12 @@ class BrainMuteUseCaseImpl extends SingleKeyValueUseCaseImpl<String, bool>
   }
 }
 
-class MuteKeyValueConverter implements SingleKeyValueConverter<String, bool> {
-  static final MuteKeyValueConverter converter = MuteKeyValueConverter._();
+class VibrationKeyValueConverter
+    implements SingleKeyValueConverter<String, bool> {
+  static final VibrationKeyValueConverter converter =
+      VibrationKeyValueConverter._();
 
-  MuteKeyValueConverter._();
+  VibrationKeyValueConverter._();
 
   @override
   String keyToString(String key) {
