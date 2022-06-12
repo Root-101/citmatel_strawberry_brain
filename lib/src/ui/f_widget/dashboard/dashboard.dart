@@ -6,7 +6,9 @@ import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
 import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
 import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -36,9 +38,53 @@ class DashBoard extends StatelessWidget {
               _buildSettingsButton(),
               //  _buildHintText(),
               _buildMultiMenu(),
+              _buildCloseButton(context),
               //     _buildMainOptions(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  _buildCloseButton(BuildContext context) {
+    Size size = Get.size;
+    return Positioned(
+      right: 10,
+      top: 10,
+      child: IconButton(
+        onPressed: () async {
+          if (await confirm(
+            context,
+            title: Text(
+              'Cerrar',
+              style: Get.textTheme.headline5!.copyWith(
+                fontSize: 25,
+              ),
+            ),
+            content: Text(
+              '¿Seguro desea cerrar Áthlos?',
+              style: Get.textTheme.headline6!.copyWith(
+                fontSize: 20,
+              ),
+            ),
+            textOK: Text(
+              'Si',
+              style: Get.textTheme.bodyText1,
+            ),
+            textCancel: Text(
+              'No',
+              style: Get.textTheme.bodyText1,
+            ),
+          )) {
+            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+            return print('closing app');
+          }
+        },
+        icon: FaIcon(
+          FontAwesomeIcons.close,
+          color: Colors.red[900]!.withOpacity(0.87),
+          size: size.width / 13,
         ),
       ),
     );

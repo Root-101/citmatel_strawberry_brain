@@ -31,6 +31,7 @@ dependencies:
       ref: develop
   font_awesome_flutter: ^10.1.0
   pushable_button: ^0.0.3
+  confirm_dialog: ^1.0.1
 
   # Utils
   faker: ^2.0.0
