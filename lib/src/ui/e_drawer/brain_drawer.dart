@@ -53,9 +53,7 @@ class BrainDrawer extends StatelessWidget {
                     size: size,
                     title: "Vibraciones.",
                     leading: Icon(
-                      controller.isVibration()
-                          ? Icons.vibration_rounded
-                          : Icons.close,
+                      controller.isVibration() ? Icons.check : Icons.close,
                       size: iconsSize,
                       color: Colors.blue.shade900,
                     ),

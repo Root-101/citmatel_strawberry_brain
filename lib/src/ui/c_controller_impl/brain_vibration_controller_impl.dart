@@ -1,4 +1,5 @@
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
+import 'package:citmatel_strawberry_tools/tools_exporter.dart';
 import 'package:get/get.dart';
 
 class BrainVibrationControllerImpl extends BrainVibrationController {
