@@ -33,6 +33,7 @@ class BrainDrawer extends StatelessWidget {
                 builder: (controller) {
                   return _buildListTile(
                     size: size,
+                    rayado: controller.isMuted(),
                     title: "Sonido.",
                     leading: Icon(
                       controller.isMuted()
@@ -51,6 +52,7 @@ class BrainDrawer extends StatelessWidget {
                 builder: (controller) {
                   return _buildListTile(
                     size: size,
+                    rayado: !controller.isVibration(),
                     title: "Vibraciones.",
                     leading: Icon(
                       controller.isVibration() ? Icons.check : Icons.close,
@@ -67,6 +69,7 @@ class BrainDrawer extends StatelessWidget {
                 builder: (controller) {
                   return _buildListTile(
                     size: size,
+                    rayado: !controller.isShowing(),
                     title: "Notificaciones.",
                     leading: controller.isShowing()
                         ? FaIcon(
@@ -148,6 +151,7 @@ class BrainDrawer extends StatelessWidget {
     required Widget leading,
     required Function tapHandler,
     required Size size,
+    bool rayado = false,
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -160,6 +164,8 @@ class BrainDrawer extends StatelessWidget {
         title: Text(
           title,
           style: Get.textTheme.subtitle2?.copyWith(
+            decoration:
+                rayado ? TextDecoration.lineThrough : TextDecoration.none,
             fontSize: size.width / 20,
             shadows: [
               Shadow(
