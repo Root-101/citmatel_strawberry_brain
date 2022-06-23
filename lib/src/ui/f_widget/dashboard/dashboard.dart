@@ -4,7 +4,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:circular_menu/circular_menu.dart';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:citmatel_strawberry_dnd/dnd_exporter.dart';
+import 'package:citmatel_strawberry_hangman/hangman_exporter.dart';
+import 'package:citmatel_strawberry_trivia/trivia_exporter.dart';
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -34,9 +38,53 @@ class DashBoard extends StatelessWidget {
               _buildSettingsButton(),
               //  _buildHintText(),
               _buildMultiMenu(),
+              _buildCloseButton(context),
               //     _buildMainOptions(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  _buildCloseButton(BuildContext context) {
+    Size size = Get.size;
+    return Positioned(
+      right: 10,
+      top: 10,
+      child: IconButton(
+        onPressed: () async {
+          if (await confirm(
+            context,
+            title: Text(
+              'Cerrar',
+              style: Get.textTheme.headline5!.copyWith(
+                fontSize: 25,
+              ),
+            ),
+            content: Text(
+              '¿Seguro desea cerrar Áthlos?',
+              style: Get.textTheme.headline6!.copyWith(
+                fontSize: 20,
+              ),
+            ),
+            textOK: Text(
+              'Si',
+              style: Get.textTheme.bodyText1,
+            ),
+            textCancel: Text(
+              'No',
+              style: Get.textTheme.bodyText1,
+            ),
+          )) {
+            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+            return print('closing app');
+          }
+        },
+        icon: FaIcon(
+          FontAwesomeIcons.close,
+          color: Colors.red[900]!.withOpacity(0.87),
+          size: size.width / 13,
         ),
       ),
     );
@@ -83,49 +131,104 @@ class DashBoard extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(
-        left: size.width / 9,
-        right: size.width / 9,
-        top: size.height / 2.3,
+        top: size.height / 3.5,
       ),
-      child: Positioned(
-        top: size.height / 3.3,
-        left: size.width / 5,
-        right: size.width / 5,
-        child: Center(
-          child: PushableButton(
-            child: Text(
-              'Jugar',
-              style: Get.theme.textTheme.subtitle2?.copyWith(
-                fontSize: size.width / 14,
+      child: CircularMenu(
+        // Menu alignment.
+        alignment: Alignment.center,
+        toggleButtonColor: Colors.transparent,
+        toggleButtonIconColor: Colors.transparent,
+        toggleButtonPadding: 0,
+        radius: size.width / 2.5,
+
+        // animation curve in forward
+        curve: Curves.bounceOut,
+        // animation curve in reverse
+        reverseCurve: Curves.fastOutSlowIn,
+
+        startingAngleInRadian: pi * 0.25,
+        endingAngleInRadian: pi * 0.75,
+
+        backgroundWidget: Positioned(
+          top: size.height / 3.3,
+          left: size.width / 5,
+          right: size.width / 5,
+          child: Center(
+            child: PushableButton(
+              child: Text(
+                'Jugar',
+                style: Get.theme.textTheme.subtitle2?.copyWith(
+                  fontSize: size.width / 14,
+                ),
               ),
+              height: size.height / 13,
+              elevation: 8,
+              hslColor: HSLColor.fromAHSL(1.0, 195, 1.0, 0.43),
+              shadow: BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 2),
+              ),
+              onPressed: () {
+                if (openClose) {
+                  key.currentState!.forwardAnimation();
+                  openClose = false;
+                } else {
+                  key.currentState!.reverseAnimation();
+                  openClose = true;
+                }
+              },
             ),
-            height: size.height / 13,
-            elevation: 8,
-            hslColor: HSLColor.fromAHSL(1.0, 195, 1.0, 0.43),
-            shadow: BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 2),
-            ),
-            onPressed: () {
-              Get.toNamed(
-                DnDLevelsScreen.ROUTE_NAME,
-                arguments: {
-                  //hacerlo en runtime para que cada vez que entre actualize
-                  'mute': Get.find<BrainMuteController>().isMuted(),
-                },
-              );
-              // if (openClose) {
-              //   key.currentState!.forwardAnimation();
-              //   openClose = false;
-              // } else {
-              //   key.currentState!.reverseAnimation();
-              //   openClose = true;
-              // }
-            },
           ),
         ),
+
+        key: key,
+
+        items: [
+          _buildCircularMenuItem(
+            size: size,
+            badgeLabel: DnDUIModule.MODULE_NAME,
+            color: DnDUIModule.PRIMARY_COLOR,
+            badgeColor: DnDUIModule.SECONDARY_COLOR,
+            icon: DnDUIModule.ICON,
+            onTap: () => Get.toNamed(
+              DnDLevelsScreen.ROUTE_NAME,
+              arguments: {
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
+              },
+            ),
+          ),
+          _buildCircularMenuItem(
+            size: size,
+            badgeLabel: TriviaUIModule.MODULE_NAME,
+            color: TriviaUIModule.PRIMARY_COLOR,
+            badgeColor: TriviaUIModule.SECONDARY_COLOR,
+            icon: TriviaUIModule.ICON,
+            onTap: () => Get.toNamed(
+              TriviaLevelsScreen.ROUTE_NAME,
+              arguments: {
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
+              },
+            ),
+          ),
+          _buildCircularMenuItem(
+            size: size,
+            badgeLabel: HangManUIModule.MODULE_NAME,
+            color: HangManUIModule.PRIMARY_COLOR,
+            badgeColor: HangManUIModule.SECONDARY_COLOR,
+            icon: HangManUIModule.ICON,
+            onTap: () => Get.toNamed(
+              HangManLevelsScreen.ROUTE_NAME,
+              arguments: {
+                //hacerlo en runtime para que cada vez que entre actualize
+                'mute': Get.find<BrainMuteController>().isMuted(),
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
