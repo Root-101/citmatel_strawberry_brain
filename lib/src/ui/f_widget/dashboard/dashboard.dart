@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -38,7 +39,7 @@ class DashBoard extends StatelessWidget {
               _buildSettingsButton(),
               //  _buildHintText(),
               _buildMultiMenu(),
-              _buildCloseButton(context),
+              //_buildCloseButton(context),//dont work
               //     _buildMainOptions(),
             ],
           ),
@@ -77,7 +78,8 @@ class DashBoard extends StatelessWidget {
               style: Get.textTheme.bodyText1,
             ),
           )) {
-            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+            SystemNavigator.pop(animated: true);
+            exit(0);
             return print('closing app');
           }
         },
