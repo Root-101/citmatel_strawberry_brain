@@ -134,6 +134,7 @@ class DashBoard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         top: size.height / 3.5,
+        right: 20,
       ),
       child: CircularMenu(
         // Menu alignment.
@@ -154,7 +155,7 @@ class DashBoard extends StatelessWidget {
         backgroundWidget: Positioned(
           top: size.height / 3.3,
           left: size.width / 5,
-          right: size.width / 5,
+          right: size.width / 5 - 20,
           child: Center(
             child: PushableButton(
               child: Text(
