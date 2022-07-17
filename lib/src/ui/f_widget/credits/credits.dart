@@ -256,10 +256,6 @@ class CreditDomain {
   final CreditInfo devCredits1 = CreditInfo(
     header: "Diseño y Programación",
     peoples: [
-      "Jesús Hernández Barrios",
-      "Jessica Aidyl García Albalah",
-      "José Luis Hernández Barrios",
-      "Brian Alejandro Luis Requeiro",
       "Contáctenos: +53 5 426 8660",
     ],
   );
