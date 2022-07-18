@@ -19,5 +19,11 @@ class BrainUIModule {
         muteUseCase: Get.find(),
       ),
     );
+
+    Get.put<BrainVibrationController>(
+      BrainVibrationControllerImpl(
+        vibrationUseCase: Get.find(),
+      ),
+    );
   }
 }

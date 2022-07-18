@@ -11,7 +11,7 @@ class BrainMuteUseCaseImpl extends SingleKeyValueUseCaseImpl<String, bool>
           key: KEY,
           defaultValue: DEFAULT_VALUE,
           repo: KeyValueRepoModule.buildKeyValueRepo(
-            converter: BoolKeyValueConverter.converter,
+            converter: MuteKeyValueConverter.converter,
             key: KEY,
           ),
         );
@@ -22,10 +22,10 @@ class BrainMuteUseCaseImpl extends SingleKeyValueUseCaseImpl<String, bool>
   }
 }
 
-class BoolKeyValueConverter implements SingleKeyValueConverter<String, bool> {
-  static final BoolKeyValueConverter converter = BoolKeyValueConverter._();
+class MuteKeyValueConverter implements SingleKeyValueConverter<String, bool> {
+  static final MuteKeyValueConverter converter = MuteKeyValueConverter._();
 
-  BoolKeyValueConverter._();
+  MuteKeyValueConverter._();
 
   @override
   String keyToString(String key) {

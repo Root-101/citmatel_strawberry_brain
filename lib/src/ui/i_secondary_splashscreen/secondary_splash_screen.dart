@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:citmatel_strawberry_brain/brain_exporter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
+import 'package:get/get.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class SecondarySplashScreen extends StatefulWidget {
@@ -44,7 +45,8 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
           );
         } else {
           return _buildBody(
-              snapshot.connectionState == ConnectionState.waiting);
+            snapshot.connectionState == ConnectionState.waiting,
+          );
         }
       },
     );
@@ -80,7 +82,12 @@ class _SecondarySplashScreenState extends State<SecondarySplashScreen> {
             done = true;
           });
         },
-        child: Text("Saltar"),
+        child: Text(
+          "Saltar",
+          style: TextStyle(
+            fontSize: Get.size.width / 19,
+          ),
+        ),
       ),
     );
   }
